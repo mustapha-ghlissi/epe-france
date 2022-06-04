@@ -1,0 +1,29 @@
+{% set categoryTitle = '' %}
+{% if categoryId %}
+    {% if categoryId == 1 %}
+        {% set categoryTitle = 'liste des conseillers municipaux' %}
+    {% elseif categoryId == 2 %}
+        {% set categoryTitle = 'liste des conseillers communautaires' %}
+    {% elseif categoryId == 3 %}
+        {% set categoryTitle = 'liste des conseillers départementaux' %}
+    {% elseif categoryId == 4 %}
+        {% set categoryTitle = 'liste des conseillers régionaux' %}
+    {% elseif categoryId == 5 %}
+        {% set categoryTitle = 'liste des conseillers Corse' %}
+    {% elseif categoryId == 6 %}
+        {% set categoryTitle = 'liste des députés européens' %}
+    {% elseif categoryId == 7 %}
+        {% set categoryTitle = 'liste des sénateurs' %}
+    {% elseif categoryId == 8 %}
+        {% set categoryTitle = 'liste des députés' %}
+    {% elseif categoryId == 9 %}
+        {% set categoryTitle = 'liste des maires' %}
+    {% elseif categoryId == 10 %}
+        {% set categoryTitle = 'liste des présidents départementaux' %}
+    {% else %}
+        {% set categoryTitle = 'liste des présidents régionaux' %}
+    {% endif %}
+{% endif %}
+{{ categoryTitle|capitalize }}
+
+

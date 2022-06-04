@@ -1,0 +1,110 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Détails député
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Détails maire</h5>
+                        <ul class="list-unstyled d-inline-flex align-items-center float-right">
+                            <li class="px-1">
+                                <a href="{{ path('m_p_d_p_r_note_index') }}" class="btn btn-link">
+                                    <i class="fa fa-arrow-left"></i> Retour
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                {{ include('manager/mpdpr_note/_delete_form.html.twig', {button_label: 'Supprimer'}) }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Adresse IP</th>
+                                <td>{{ m_p_d_p_r_note.ipAddress }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date d'évaluation</th>
+                                <td>{{ m_p_d_p_r_note.evaluationDate ? m_p_d_p_r_note.evaluationDate|date('d/m/Y à H:i') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Sécurité</th>
+                                <td>{{ m_p_d_p_r_note.security }}</td>
+                            </tr>
+                            <tr>
+                                <th>Action sociale et santé</th>
+                                <td>{{ m_p_d_p_r_note.socialAction }}</td>
+                            </tr>
+                            <tr>
+                                <th>Emploi – Insertion professionnelle</th>
+                                <td>{{ m_p_d_p_r_note.jobProfessionalInsert }}</td>
+                            </tr>
+                            <tr>
+                                <th>Enseignement</th>
+                                <td>{{ m_p_d_p_r_note.teaching }}</td>
+                            </tr>
+                            <tr>
+                                <th>Enfance -  Jeunesse</th>
+                                <td>{{ m_p_d_p_r_note.youthChildhood }}</td>
+                            </tr>
+                            <tr>
+                                <th>Sports</th>
+                                <td>{{ m_p_d_p_r_note.sports }}</td>
+                            </tr>
+                            <tr>
+                                <th>Interventions dans le domaine économique</th>
+                                <td>{{ m_p_d_p_r_note.economicalIntervention }}</td>
+                            </tr>
+                            <tr>
+                                <th>Politique de la ville</th>
+                                <td>{{ m_p_d_p_r_note.cityPolitics }}</td>
+                            </tr>
+                            <tr>
+                                <th>Aménagement rural, planification et aménagement du territoire</th>
+                                <td>{{ m_p_d_p_r_note.ruralDevelopment }}</td>
+                            </tr>
+                            <tr>
+                                <th>Logement et habitat</th>
+                                <td>{{ m_p_d_p_r_note.accommodation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Environnement et patrimoine</th>
+                                <td>{{ m_p_d_p_r_note.environment }}</td>
+                            </tr>
+                            <tr>
+                                <th>Déchets</th>
+                                <td>{{ m_p_d_p_r_note.garbage }}</td>
+                            </tr>
+                            <tr>
+                                <th>Réseaux caclés et télécommunications</th>
+                                <td>{{ m_p_d_p_r_note.telecoms }}</td>
+                            </tr>
+                            <tr>
+                                <th>Energie</th>
+                                <td>{{ m_p_d_p_r_note.energy }}</td>
+                            </tr>
+                            <tr>
+                                <th>Transports scolaires et publics</th>
+                                <td>{{ m_p_d_p_r_note.transports }}</td>
+                            </tr>
+                            {% if m_p_d_p_r_note.comment %}
+                                <tr>
+                                    <th>Commentaire</th>
+                                    <td>{{ m_p_d_p_r_note.comment }}</td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

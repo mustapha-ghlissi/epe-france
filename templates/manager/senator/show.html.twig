@@ -1,0 +1,162 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Détails sénateur
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Détails sénateur</h5>
+                        <ul class="list-unstyled d-inline-flex align-items-center float-right">
+                            <li class="px-1">
+                                <a href="{{ path('senator_index') }}" class="btn btn-link">
+                                    <i class="fa fa-arrow-left"></i> Retour
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('manager_elected_member', {categoryId: 7, id: senator.id }) }}" class="btn btn-secondary">
+                                    <i class="fa fa-newspaper"></i> Ajouter extra data
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('senator_edit', {'id': senator.id}) }}" class="btn btn-success">
+                                    <i class="fa fa-edit"></i> Modifier
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('board_minute_index', {categoryId: 7, id: senator.id }) }}" class="btn btn-warning">
+                                    <i class="fa fa-file"></i> PVs de conseils
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                {{ include('manager/senator/_delete_form.html.twig', {button_label: 'Supprimer'}) }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">
+                                    Infos générales
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ senator.lastName|upper }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom</th>
+                                <td>{{ senator.firstName|capitalize }}</td>
+                            </tr>
+                            <tr>
+                                <th>Sexe</th>
+                                <td>{{ senator.gender|upper }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de naissance</th>
+                                <td>{{ senator.birthDate ? senator.birthDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">
+                                    Détails profession
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Code</th>
+                                <td>{{ senator.professionCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ senator.professionLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date début de mandat</th>
+                                <td>{{ senator.mandateStartDate ? senator.mandateStartDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">
+                                    Détails géographique
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Latitude - Longitude</th>
+                                <td>{{ senator.latitude ~ ' - ' ~ senator.longitude }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">
+                                    Détails département
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Code de département</th>
+                                <td>{{ senator.departmentCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé de département</th>
+                                <td>{{ senator.departmentLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Chef-Lieu de département</th>
+                                <td>{{ senator.departmentCapital }}</td>
+                            </tr>
+                            <tr>
+                                <th>Population de département (Hab/km²)</th>
+                                <td>{{ senator.departmentPopulation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Superficie de département (km²)</th>
+                                <td>{{ senator.departmentSurface }}</td>
+                            </tr>
+                            <tr>
+                                <th>Densité de département</th>
+                                <td>{{ senator.departmentDensity }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">
+                                    Détails région
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ senator.areaLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre des départements</th>
+                                <td>{{ senator.nbDepartments }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de service public</th>
+                                <td>{{ senator.nbPublicService }}</td>
+                            </tr>
+                            <tr>
+                                <th>Chef-Lieu</th>
+                                <td>{{ senator.areaCapital }}</td>
+                            </tr>
+                            <tr>
+                                <th>Superficie</th>
+                                <td>{{ senator.areaSurface }}</td>
+                            </tr>
+                            <tr>
+                                <th>Population {{ senator.populationYear }}</th>
+                                <td>{{ senator.areaPopulation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Densité</th>
+                                <td>{{ senator.areaDensity }}</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

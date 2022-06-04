@@ -1,0 +1,181 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Détails conseiller municipal
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Détails conseiller municipal</h5>
+                        <ul class="list-unstyled d-inline-flex align-items-center float-right">
+                            <li class="px-1">
+                                <a href="{{ path('municipal_advisor_index') }}" class="btn btn-link">
+                                    <i class="fa fa-arrow-left"></i> Retour
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('manager_elected_member', {categoryId: 1, id: municipal_advisor.id }) }}" class="btn btn-secondary">
+                                    <i class="fa fa-newspaper"></i> Ajouter extra data
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('municipal_advisor_edit', {'id': municipal_advisor.id}) }}" class="btn btn-success">
+                                    <i class="fa fa-edit"></i> Modifier
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('board_minute_index', {categoryId: 1, id: municipal_advisor.id }) }}" class="btn btn-warning">
+                                    <i class="fa fa-file"></i> PVs de conseils
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                {{ include('manager/municipal_advisor/_delete_form.html.twig', {button_label: 'Supprimer'}) }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Infos générales</th>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ municipal_advisor.lastName|upper }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom</th>
+                                <td>{{ municipal_advisor.firstName|capitalize }}</td>
+                            </tr>
+                            <tr>
+                                <th>Sexe</th>
+                                <td>{{ municipal_advisor.gender|upper }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de naissance</th>
+                                <td>{{ municipal_advisor.birthDate ? municipal_advisor.birthDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nationalité</th>
+                                <td>{{ municipal_advisor.nationality|capitalize }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails profession</th>
+                            </tr>
+                            <tr>
+                                <th>Code</th>
+                                <td>{{ municipal_advisor.professionCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ municipal_advisor.professionLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date début de mandate</th>
+                                <td>{{ municipal_advisor.mandateStartDate ? municipal_advisor.mandateStartDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé de fonction</th>
+                                <td>{{ municipal_advisor.functionLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date début de la fonction</th>
+                                <td>{{ municipal_advisor.functionStartDate ? municipal_advisor.functionStartDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">
+                                    Détails géographique
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Latitude - Longitude</th>
+                                <td>{{ municipal_advisor.latitude ~ ' - ' ~ municipal_advisor.longitude }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails département</th>
+                            </tr>
+                            <tr>
+                                <th>Code</th>
+                                <td>{{ municipal_advisor.departmentCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ municipal_advisor.departmentLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Chef-Lieu</th>
+                                <td>{{ municipal_advisor.departmentCapital }}</td>
+                            </tr>
+                            <tr>
+                                <th>Population</th>
+                                <td>{{ municipal_advisor.departmentPopulation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Superficie (km²)</th>
+                                <td>{{ municipal_advisor.departmentSurface }}</td>
+                            </tr>
+                            <tr>
+                                <th>Densité (Hab./km²)</th>
+                                <td>{{ municipal_advisor.departmentDensity }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails région</th>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ municipal_advisor.areaLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre des départements</th>
+                                <td>{{ municipal_advisor.nbDepartments }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de service public</th>
+                                <td>{{ municipal_advisor.nbDepartments }}</td>
+                            </tr>
+                            <tr>
+                                <th>Chef-Lieu</th>
+                                <td>{{ municipal_advisor.areaCapital }}</td>
+                            </tr>
+                            <tr>
+                                <th>Superficie (km²)</th>
+                                <td>{{ municipal_advisor.areaSurface }}</td>
+                            </tr>
+                            <tr>
+                                <th>Population {{ municipal_advisor.populationYear }}</th>
+                                <td>{{ municipal_advisor.areaPopulation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Densité (Hab./km²)</th>
+                                <td>{{ municipal_advisor.areaDensity }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails commune</th>
+                            </tr>
+                            <tr>
+                                <th>Code INSEE</th>
+                                <td>{{ municipal_advisor.codeInsee }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ municipal_advisor.communeLabel|capitalize }}</td>
+                            </tr>
+                            <tr>
+                                <th>Code postal</th>
+                                <td>{{ municipal_advisor.zipCode }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'app/layout.html.twig' %}
+{% block title %} {{title}} {% endblock %}
+{% block content %}
+    <div class="content">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-light border">
+                    <li class="breadcrumb-item"><a href="{{ path('app') }}">Accueil</a></li>
+                    <li class="breadcrumb-item active" area-current="page">{{title}}</li>
+                </ol>
+            </nav>
+            <div class="row">
+                <div class="col">
+                    <h2 title="{{title}}">
+                        {{ title }}
+                    </h2>
+                    <hr/>
+                    <div id="filterForm" data-category-id="{{ categoryId }}"></div>
+                </div>
+            </div>
+            <div class="elected-representatives-cities">
+                {% if electedMembers.getTotalItemCount > 7 %}
+                    <div class="navigation mt-3 mb-5 float-right">
+                        {{ knp_pagination_render(electedMembers) }}
+                    </div>
+                    <div class="clearfix"></div>
+                {% endif %}
+
+                <div class="row">
+                    <div class='col-lg-8'>
+                        {% for member in electedMembers %}
+                            <form action="{{ path('elected_member_details', {categoryName: app.request.get('categoryName')}) }}" method="post">
+                                <input type="hidden" name="categoryId" value="{{ categoryId }}">
+                                <input type="hidden" name="memberId" value="{{ member.id }}">
+                                {% include 'app/_common/_member_item.html.twig' %}
+                            </form>
+                        {% endfor %}
+                    </div>
+                    <div class='col-lg-4'>
+                        
+                        <p class="text-justify">
+                        Évaluez vos élus de proximité, c'est de renouer des liens de confiance dans le but de nourrir la démocratie mixte et de revitaliser la vie démocratique.</p>
+                      
+                        {% for noteLink in noteLinks %}
+                            {% if loop.index != categoryId %}
+                                <form action="{{ noteLink.url }}" method="post">
+                                    <input type="hidden" name="categoryId" value="{{ noteLink.categoryId }}">
+                                    <div class="card {{ noteLink.class }} my-5 form-vote text-white" style="background-color: {{ noteLink.color }}">
+                                        <div class="card-body">
+                                            <i class="fa fa-star-half-alt"></i> {{ noteLink.title }}
+                                        </div>
+                                    </div>
+                                </form>
+                            {% endif %}
+                        {% endfor %}
+
+                        <div class="mb-3">
+                            <iframe style="height: 250px; width: 100%" src="https://www.youtube.com/embed/w_PrVDmb8Ig" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="mb-3">
+                            <iframe style="height: 250px; width: 100%" src="https://www.youtube.com/embed/AqNIvfJhOzY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                {% if electedMembers.getTotalItemCount >= 7 %}
+                    <div class="navigation mt-5 float-right">
+                        {{ knp_pagination_render(electedMembers) }}
+                    </div>
+                    <div class="clearfix"></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

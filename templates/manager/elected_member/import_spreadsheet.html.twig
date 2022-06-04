@@ -1,0 +1,52 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% set title = 'des conseillers ' %}
+{% if categoryId == 1 %}
+    {% set title = title ~ 'municipaux' %}
+{% elseif categoryId == 2 %}
+    {% set title = title ~ 'communautaires' %}
+{% elseif categoryId == 3 %}
+    {% set title = title ~ 'départementaux' %}
+{% elseif categoryId == 4 %}
+    {% set title = title ~ 'régionaux' %}
+{% elseif categoryId == 5 %}
+    {% set title = title ~ 'corse' %}
+{% elseif categoryId == 6 %}
+    {% set title = 'des députés européens' %}
+{% elseif categoryId == 7 %}
+    {% set title = 'des sénateurs' %}
+{% elseif categoryId == 8 %}
+    {% set title = 'des députés' %}
+{% elseif categoryId == 9 %}
+    {% set title = 'des maires' %}
+{% endif %}
+
+{% block title %}
+    {{ parent() }} - Importer {{ title }}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Importer un fichier {{ title }}</h5>
+                        <a href="{{ referer }}" class="btn btn-link btn-sm float-right">
+                            <i class="fa fa-arrow-left"></i> Retour
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                                {{ form_row(form.file) }}
+                                <div class="form-group text-right">
+                                    <button class="btn btn-primary">Importer et Enregistrer</button>
+                                </div>
+                        {{ form_rest(form) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} EPE France {% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('manager') }}
+{% endblock %}
+
+{% block header %}
+    {% include 'manager/_common/_header.html.twig' %}
+{% endblock %}
+
+{% block body %}
+<div class="d-flex" id="wrapper">
+    {% include 'manager/_common/_sidebar.html.twig' %}
+    <div id="page-content-wrapper">
+        {% include 'manager/_common/_header.html.twig' %}
+        {% block content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'manager/_common/_footer.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('manager') }}
+{% endblock %}

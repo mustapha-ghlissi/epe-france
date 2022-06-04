@@ -1,0 +1,161 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Détails conseiller corse
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Détails conseiller corse</h5>
+                        <ul class="list-unstyled d-inline-flex align-items-center float-right">
+                            <li class="px-1">
+                                <a href="{{ path('corsican_advisor_index') }}" class="btn btn-link">
+                                    <i class="fa fa-arrow-left"></i> Retour
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('manager_elected_member', {categoryId: 5, id: corsican_advisor.id }) }}" class="btn btn-secondary">
+                                    <i class="fa fa-newspaper"></i> Ajouter extra data
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('corsican_advisor_edit', {'id': corsican_advisor.id}) }}" class="btn btn-success">
+                                    <i class="fa fa-edit"></i> Modifier
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('board_minute_index', {categoryId: 5, id: corsican_advisor.id }) }}" class="btn btn-warning">
+                                    <i class="fa fa-file"></i> PVs de conseils
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                {{ include('manager/corsican_advisor/_delete_form.html.twig', {button_label: 'Supprimer'}) }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Infos générales</th>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ corsican_advisor.lastName|upper }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom</th>
+                                <td>{{ corsican_advisor.firstName|capitalize }}</td>
+                            </tr>
+                            <tr>
+                                <th>Sexe</th>
+                                <td>{{ corsican_advisor.gender }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de naissance</th>
+                                <td>{{ corsican_advisor.birthDate ? corsican_advisor.birthDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails profession</th>
+                            </tr>
+                            <tr>
+                                <th>Code</th>
+                                <td>{{ corsican_advisor.professionCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ corsican_advisor.professionLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date début de mandate</th>
+                                <td>{{ corsican_advisor.mandateStartDate ? corsican_advisor.mandateStartDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé de fonction</th>
+                                <td>{{ corsican_advisor.functionLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date début de fonction</th>
+                                <td>{{ corsican_advisor.functionStartDate ? corsican_advisor.functionStartDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">
+                                    Détails géographique
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Latitude - Longitude</th>
+                                <td>{{ corsican_advisor.latitude ~ ' - ' ~ corsican_advisor.longitude }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails département</th>
+                            </tr>
+                            <tr>
+                                <th>Code</th>
+                                <td>{{ corsican_advisor.departmentCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ corsican_advisor.departmentLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Chef-Lieu</th>
+                                <td>{{ corsican_advisor.departmentCapital }}</td>
+                            </tr>
+                            <tr>
+                                <th>Population</th>
+                                <td>{{ corsican_advisor.departmentPopulation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Superficie (km²)</th>
+                                <td>{{ corsican_advisor.departmentSurface }}</td>
+                            </tr>
+                            <tr>
+                                <th>Densité (Hab./km²)</th>
+                                <td>{{ corsican_advisor.departmentDensity }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails région</th>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ corsican_advisor.areaLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre des départements</th>
+                                <td>{{ corsican_advisor.nbDepartments }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de service public</th>
+                                <td>{{ corsican_advisor.nbPublicService }}</td>
+                            </tr>
+                            <tr>
+                                <th>Chef-Lieu</th>
+                                <td>{{ corsican_advisor.areaCapital }}</td>
+                            </tr>
+                            <tr>
+                                <th>Superficie (km²)</th>
+                                <td>{{ corsican_advisor.areaSurface }}</td>
+                            </tr>
+                            <tr>
+                                <th>Population {{ corsican_advisor.populationYear }}</th>
+                                <td>{{ corsican_advisor.areaPopulation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Densité (Hab./km²)</th>
+                                <td>{{ corsican_advisor.areaDensity }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

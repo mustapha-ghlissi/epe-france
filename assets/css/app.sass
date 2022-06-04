@@ -1,0 +1,324 @@
+
+//linear-gradient(#005C97, #363795)
+$primary-color: #005C97
+
+body
+  margin: 0
+  font-family: "Open Sans", serif
+
+
+textarea
+  resize: none
+
+.bg-primary, .btn-primary, .badge-primary
+  background-color: $primary-color !important
+
+
+#btn-back-top
+  position: fixed
+  right: 40px
+  bottom: 40px
+  display: none
+
+
+.btn
+  border-radius: 32px
+
+.btn, .badge
+  box-shadow: none !important
+
+.btn-primary
+  border-color: $primary-color !important
+
+#map
+  height: 450px
+
+.rating-value
+  width: 50px
+  margin-left: 15px
+
+a
+  color: $primary-color !important
+
+.epe-categories
+  a
+    color: white !important
+
+.btn-link
+  box-shadow: none !important
+
+.form-control
+  height: 50px
+  border-radius: 25px !important
+  &:focus
+    border-color: $primary-color !important
+    box-shadow: none !important
+
+.input-group
+  .form-control
+    border-radius: 25px 0 0 25px !important
+
+
+.form-search
+  .form-control
+    border: none !important
+
+.card
+  border: none
+  box-shadow: 0 0 1px lightgrey
+
+.elected-representatives-cities
+    .card
+      transition: background-color 0.4s ease-out
+      &:hover
+        color: white !important
+        box-shadow: 0px 0px 1px grey
+        background-color: #005C97
+
+.bg-primary
+  a
+    color: white !important
+
+.navbar-toggler
+  outline: none !important
+
+.elected-avatar
+  width: 180px
+  height: 180px
+  object-fit: cover
+
+.extra-data-videos, .extra-data-timelines
+  iframe
+    width: 100% !important
+    height: 250px
+
+.elected-list-form
+  .input-group-text
+    border-radius: 0 25px 25px 0 !important
+    &.active
+      border-radius: 0 25px 0 0 !important
+  .form_criteria
+    &.active
+      border-radius: 25px 0 0 0 !important
+  .result-search-list
+    width: 100%
+    max-height: 300px
+    border-radius: 0 0 25px 25px
+    position: absolute
+    top: 50px
+    z-index: 999
+    ul
+      max-height: 300px
+      div:hover
+        background-color: #F1F1F1
+        color: #005C97 !important
+
+
+.select2-selection--single
+  height: 50px !important
+  background-color: white
+  border: none !important
+  border-radius: 25px 0px 0px 25px !important
+.select2-selection__rendered
+  line-height: 50px !important
+  color: black !important
+  padding-left: 15px !important
+.select2-selection__arrow
+  height: 50px !important
+.select2-dropdown
+  background-color: white !important
+.select2-dropdown--below
+  padding-top: 30px
+
+.select2-container--open
+  .select2-selection--single
+    border-radius: 25px 0px 0px 0px !important
+
+.select2-selection__placeholder
+  color: #777 !important
+
+.select2-search__field:focus
+  border-color: $primary-color !important
+  box-shadow: none !important
+
+.mobile-search-form
+  .select2-selection--single
+    border-radius: 32px !important
+  .select2-dropdown
+    background-color: white !important
+  .select2-container--open
+    .select2-selection--single
+      border-radius: 25px 25px 0px 0px !important
+  .btn
+    border-radius: 25px
+  #search_criteria.active
+    border-radius: 25px 25px 0 0 !important
+
+
+#accountingsTaxes
+  table
+    thead
+      tr:nth-child(2)
+        th
+          min-width: 200px !important
+  #accounting-commune, #tax-commune
+    table
+      thead
+        th
+          min-width: 200px !important
+
+
+
+
+
+::placeholder
+  color: #777 !important
+
+.nav-tabs
+  .nav-link
+    padding: 20px !important
+    border-radius: 0
+    &.active
+      color: white !important
+      font-weight: bolder
+      background-color: #03224C
+
+#home
+  height: 85vh
+  position: relative
+  .form-search
+    #search_criteria.disabled
+      background: lightgrey !important
+    #search_criteria_mobile.active
+      border-radius: 25px 25px 0 0 !important
+
+  .slick-dots
+    width: auto
+    z-index: 9999 !important
+    right: 20px
+    top: 50%
+    li
+      display: block
+      button::before
+        font-size: 16px
+        color: white
+
+  .list-form-search
+    width: 100%
+    max-height: 180px
+    border-radius: 0 0 25px 25px
+    position: absolute
+    top: 50px
+    z-index: 1040 !important
+    ul
+      max-height: 180px
+      div:hover
+        background-color: #F1F1F1
+        color: #005C97 !important
+
+  .desktop-search-form
+    .form-control
+      border-radius: 0 !important
+    .select2-container
+      width: auto !important
+
+  .home-slider, .home-slider-item
+    height: 85vh
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      object-position: center top
+
+  .overlay
+    background-color: rgba(0, 0, 0, 0.6)
+    position: absolute
+    height: 100%
+    left: 0
+    right: 0
+    z-index: 999
+    .form-search
+      .btn
+        border-bottom-right-radius: 25px
+        border-top-right-radius: 25px
+      .form-control
+        background-color: white
+
+
+
+
+.section
+  padding: 50px 20px 80px
+  &:nth-child(2n)
+    background-color: #F1F1F1
+    .slick-prev::before, .slick-next::before
+      color: #005C97 !important
+  &:nth-child(2n+1)
+    .slick-prev::before, .slick-next::before
+      color: #005C97 !important
+    .card
+      background-color: #F1F1F1
+  .section-title
+    text-align: center
+    margin-bottom: 50px
+
+.content
+  min-height: 100vh
+  background: #F1F1F1
+  padding: 160px 0
+
+.copyright
+  a
+    font-size: 12px
+
+.text-primary
+  color: #005C97 !important
+
+.table-responsive
+  .form-control
+    height: 40px
+
+.page-link
+  box-shadow: none !important
+.page-item.active .page-link
+  background-color: #005C97
+  border-color: #005C97
+  color: white !important
+
+.form-vote
+  cursor: pointer
+
+.btn-more
+  border: 1px solid #005C97
+  box-shadow: 0 5px 0 1px #005C97 !important
+  color: #005C97 !important
+  text-decoration: none !important
+  &:active
+    box-shadow: 0 1px 0 1px !important
+
+
+
+footer
+  .footer-title-block
+    color: white !important
+  div:first-child
+    color: rgba(255, 255, 255, 0.7) !important
+  .epe-categories
+    a
+      color: rgba(255, 255, 255, 0.7) !important
+
+
+@media all and (max-width: 991.98px)
+  #home
+    .list-form-search
+      max-height: 180px !important
+      ul
+        max-height: 180px !important
+    #home-title
+      font-size: 23px !important
+      margin-top: 150px !important
+
+    .home-slider-item
+      img
+        margin-top: 100px !important
+        object-position: center top !important

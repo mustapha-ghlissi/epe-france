@@ -1,0 +1,1416 @@
+{% if categoryId != 6 %}
+    {% if categoryId == 4 or categoryId == 11 %}
+        <div class="card mb-3">
+            <div class="card-header bg-primary border-0" style="background-color: #0F056B">
+                <h5 class="mb-0">
+                    <a class="btn btn-link text-white font-weight-bolder d-flex flex-row align-items-center"
+                       data-toggle="collapse" data-target="#accountingsTaxes"
+                       aria-expanded="true"
+                       aria-controls="boardMinutes">
+                       <i class="fas fa-chart-line fa-2x mr-3"></i> {{ 'Chiffres clés des données financières et fiscales '|capitalize }}
+                        <i class="ml-3 fa fa-arrow-right"></i>
+                    </a>
+                </h5>
+            </div>
+            <div id="accountingsTaxes" class="collapse">
+                <div class="card-body">
+                    <h4 class="my-3" style="ml-5">
+                        {{ source ? 'Source : ' ~ source : '' }}
+                    </h4>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="accounting-tab" data-toggle="tab"
+                               href="#accounting" role="tab" aria-controls="accounting"
+                               aria-selected="true">
+                                1°) Comptes comptables
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="tax-tab" data-toggle="tab" href="#tax"
+                               role="tab" aria-controls="tax" aria-selected="false">
+                                2°) Impôt sur le revenu
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="accounting" role="tabpanel"
+                             aria-labelledby="accounting-tab">
+                            <ul class="nav nav-tabs" id="accountingTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="accounting-area-tab" data-toggle="tab"
+                                       href="#accounting-area" role="tab" aria-controls="accounting-area-tab"
+                                       aria-selected="true">
+                                        Chiffres clés de la région
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="accountingSubContent">
+                                <div class="tab-pane fade show active" id="accounting-area" role="tabpanel"
+                                     aria-labelledby="tax-area-tab">
+                                    <div class="table-responsive p-2">
+                                        <table class="table table-bordered text-center"
+                                               style="width: 100%">
+                                            <thead>
+                                            <tr class="text-white bg-primary text-left">
+                                                <th colspan="23" style="padding-left: 200px">
+                                                    Région: {{ electedMember.areaLabel|upper }}
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Année
+                                                </th>
+                                                <th>
+                                                    Code Insee
+                                                </th>
+                                                <th>
+                                                    Commune
+                                                </th>
+                                                <th>
+                                                    Département
+                                                </th>
+                                                <th>
+                                                    Type groupement
+                                                </th>
+                                                <th>
+                                                    Population légale
+                                                </th>
+                                                <th>{{ 'TOTAL DES PRODUITS DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'IMPÔTS LOCAUX'|capitalize }}</th>
+                                                <th>{{ 'AUTRES IMPÔTS ET TAXES'|capitalize }}</th>
+                                                <th>{{ 'DOTATION GLOBALE DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'TOTAL DES CHARGES DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'CHARGES DE PERSONNEL'|capitalize }}</th>
+                                                <th>{{ 'ACHATS ET CHARGES EXTERNES'|capitalize }}</th>
+                                                <th>{{ 'CHARGES FINANCIÈRES'|capitalize }}</th>
+                                                <th>{{ 'SUBVENTIONS VERSÉES'|capitalize }}</th>
+                                                <th>{{ 'TAXE D\'HABITATION (Y COMPRIS THLV)'|capitalize }}</th>
+                                                <th>{{ 'TAXE FONCIÈRE SUR LES PROPRIÉTÉS BÂTIES'|capitalize }}</th>
+                                                <th>{{ 'TAXE FONCIÈRE SUR LES PROPRIÉTÉS NON BÂTIES'|capitalize }}</th>
+                                                <th>{{ 'EMPRUNTS BANCAIRES ET DETTES ASSIMILÉES'|capitalize }}</th>
+                                                <th>{{ 'SUBVENTIONS REÇUES'|capitalize }}</th>
+                                                <th>{{ 'DÉPENSES D\'ÉQUIPEMENT'|capitalize }}</th>
+                                                <th>{{ 'REMBOURSEMENT D\'EMPRUNTS ET DETTES ASSIMILÉES'|capitalize }}</th>
+                                                <th>{{ 'ANNUITÉ DE LA DETTE'|capitalize }}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for key,areaFinancials in taxAccountingData['areaFinancials']['data'] %}
+                                                {% set total = taxAccountingData['areaFinancials']['totals'][key] %}
+                                                <tr class="text-white text-left" style="background-color: #1E90FF">
+                                                    <th colspan="23">
+                                                        {{ total.departmentLabel|upper }}
+                                                    </th>
+                                                </tr>
+                                                <tr class="text-white text-center" style="background-color: #BB0B0B">
+                                                    <td colspan="6">{{ total.title }}</td>
+                                                    <td>{{ total.productsTotal|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.localTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.otherTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.globalAllocation|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.totalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.personalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.externalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.financialExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.grants|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.housingTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.propertyTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.noPropertyTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.brankCredits|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.receivedGrants|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.equipmentExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.creditRefund|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.debtAnnuity|number_format(0, '.', ' ') }} €</td>
+                                                </tr>
+                                                {% for accounting in areaFinancials %}
+                                                    <tr>
+                                                        <td>{{ accounting.year }}</td>
+                                                        <td>{{ accounting.codeInsee }}</td>
+                                                        <td>{{ accounting.communeLabel }}</td>
+                                                        <td>{{ accounting.departmentLabel }}</td>
+                                                        <td>{{ accounting.groupingType }}</td>
+                                                        <td>{{ accounting.population|number_format(0, ' ', ' ') }}</td>
+                                                        <td>{{ accounting.productsTotal|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.localTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.otherTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.globalAllocation|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.totalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.personalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.externalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.financialExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.grants|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.housingTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.propertyTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.noPropertyTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.brankCredits|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.receivedGrants|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.equipmentExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.creditRefund|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.debtAnnuity|number_format(0, '.', ' ') }} €</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tax" role="tabpanel"
+                             aria-labelledby="tax-tab">
+                            <ul class="nav nav-tabs" id="taxTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="tax-area-tab" data-toggle="tab"
+                                       href="#tax-area" role="tab" aria-controls="tax-area-tab"
+                                       aria-selected="true">
+                                        Chiffres clés de la région
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="taxSubContent">
+                                <div class="tab-pane fade show active" id="tax-area" role="tabpanel"
+                                     aria-labelledby="tax-area-tab">
+                                    <div class="table-responsive p-2">
+                                        <table class="table table-bordered text-center"
+                                               style="width: 100%">
+                                            <thead>
+                                            <tr class="text-white bg-primary text-left">
+                                                <th colspan="13" style="padding-left: 200px">
+                                                   Région: {{ electedMember.areaLabel|upper }}
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Année
+                                                </th>
+                                                <th>
+                                                    Code Insee
+                                                </th>
+                                                <th>
+                                                    Commune
+                                                </th>
+                                                <th>
+                                                    Département
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS FISCAUX">
+                                                    {{ 'NOMBRE DE FOYERS FISCAUX'|capitalize }}
+                                                </th>
+                                                <th title="REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX">
+                                                    {{'REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX'|capitalize}}
+                                                </th>
+                                                <th title="MONTANT IMPÔT NET TOTAL">
+                                                    {{ 'MONTANT IMPÔT NET TOTAL'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS FISCAUX IMPOSABLE">
+                                                    {{ 'NOMBRE DE FOYERS FISCAUX IMPOSABLE'|capitalize }}
+                                                </th>
+                                                <th title="REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX IMPOSÉS">
+                                                    {{ 'REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX IMPOSÉS'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES">
+                                                    {{ 'NOMBRE DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES'|capitalize }}
+                                                </th>
+                                                <th title="MONTANT DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES">
+                                                    {{ 'MONTANT DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS CONCERNÉS RETRAITES ET PENSIONS">
+                                                    {{ 'NOMBRE DE FOYERS CONCERNÉS RETRAITES ET PENSIONS'|capitalize }}
+                                                </th>
+                                                <th title="MONTANT DE FOYERS CONCERNÉS RETRAITES ET PENSIONS">
+                                                    {{ 'MONTANT DE FOYERS CONCERNÉS RETRAITES ET PENSIONS'|capitalize }}
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for key, areaTaxes in taxAccountingData['areaTaxes']['data'] %}
+                                                {% set total = taxAccountingData['areaTaxes']['totals'][key] %}
+                                                <tr class="text-white text-left" style="background-color: #1E90FF">
+                                                    <th colspan="13">
+                                                        {{total.departmentLabel|upper }}
+                                                    </th>
+                                                </tr>
+                                                <tr class="text-white text-center" style="background-color: #BB0B0B">
+                                                    <td colspan="4">{{ total.title }}</td>
+                                                    <td>{{ total.nbTaxHomes|number_format(0, ' ', ' ') }}</td>
+                                                    <td>{{ total.taxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.totalAmount|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.nbImposableTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ total.imposableTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.salaryNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ total.salaryTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.pensionNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ total.pensionTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                </tr>
+                                                {% for tax in areaTaxes %}
+                                                    <tr>
+                                                        <td>{{ tax.year }}</td>
+                                                        <td>{{ tax.codeInsee }}</td>
+                                                        <td>{{ tax.communeLabel }}</td>
+                                                        <td>{{ tax.departmentLabel }}</td>
+                                                        <td>{{ tax.nbTaxHomes|number_format(0, ' ', ' ') }}</td>
+                                                        <td>{{ tax.taxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ tax.totalAmount|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ tax.nbImposableTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ tax.imposableTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ tax.salaryNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ tax.salaryTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ tax.pensionNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ tax.pensionTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% elseif categoryId == 1 or categoryId == 2 or categoryId == 9 %}
+        <div class="card mb-3">
+            <div class="card-header bg-primary border-0">
+                <h5 class="mb-0">
+                    <a class="btn btn-link text-white font-weight-bolder d-flex flex-row align-items-center"
+                       data-toggle="collapse" data-target="#accountingsTaxes"
+                       aria-expanded="true"
+                       aria-controls="boardMinutes">
+                        <i class="fas fa-chart-line fa-2x mr-3"></i> {{ 'Chiffres clés des données financières et fiscales '|capitalize }}
+                        <i class="ml-3 fa fa-arrow-right"></i>
+                    </a>
+                </h5>
+            </div>
+            <div id="accountingsTaxes" class="collapse">
+                <div class="card-body">
+                <h4 class="my-3" style="ml-5">
+                        {{ source ? 'Source : ' ~ source : '' }}
+                    </h4>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item flex-fill" role="presentation">
+                            <a class="nav-link active" id="accounting-tab" data-toggle="tab"
+                               href="#accounting" role="tab" aria-controls="accounting"
+                               aria-selected="true">
+                                1°) Comptes comptables
+                            </a>
+                        </li>
+                        <li class="nav-item flex-fill" role="presentation">
+                            <a class="nav-link" id="tax-tab" data-toggle="tab" href="#tax"
+                               role="tab" aria-controls="tax" aria-selected="false">
+                                2°) Impôt sur le revenu
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="accounting" role="tabpanel"
+                             aria-labelledby="accounting-tab">
+
+                            <ul class="nav nav-tabs" id="accountingTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="accounting-commune-tab"
+                                       data-toggle="tab"
+                                       href="#accounting-commune" role="tab"
+                                       aria-controls="accounting-commune-tab" aria-selected="true">
+                                        Chiffres clés de la commune
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="accounting-dep-tab" data-toggle="tab"
+                                       href="#accounting-department" role="tab"
+                                       aria-controls="accounting-dep-atb" aria-selected="true">
+                                        Chiffres clés du département
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="accounting-area-tab" data-toggle="tab"
+                                       href="#accounting-area" role="tab" aria-controls="accounting-area-tab"
+                                       aria-selected="true">
+                                        Chiffres clés de la région
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" id="accountingSubContent">
+                                <div class="tab-pane fade show active" id="accounting-commune"
+                                     role="tabpanel"
+                                     aria-labelledby="tax-commune-tab">
+                                    <div class="table-responsive p-2">
+                                        <table class="table table-bordered text-center"
+                                               style="width: 100%">
+                                            <thead>
+                                            <tr>
+                                                <th>
+                                                    Année
+                                                </th>
+                                                <th>
+                                                    Code Insee
+                                                </th>
+                                                <th>
+                                                    Population légale
+                                                </th>
+                                                <th>
+                                                    Type groupement
+                                                </th>
+                                                <th>{{ 'TOTAL DES PRODUITS DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'IMPÔTS LOCAUX'|capitalize }}</th>
+                                                <th>{{ 'AUTRES IMPÔTS ET TAXES'|capitalize }}</th>
+                                                <th>{{ 'DOTATION GLOBALE DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'TOTAL DES CHARGES DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'CHARGES DE PERSONNEL'|capitalize }}</th>
+                                                <th>{{ 'ACHATS ET CHARGES EXTERNES'|capitalize }}</th>
+                                                <th>{{ 'CHARGES FINANCIÈRES'|capitalize }}</th>
+                                                <th>{{ 'SUBVENTIONS VERSÉES'|capitalize }}</th>
+                                                <th>{{ 'TAXE D\'HABITATION (Y COMPRIS THLV)'|capitalize }}</th>
+                                                <th>{{ 'TAXE FONCIÈRE SUR LES PROPRIÉTÉS BÂTIES'|capitalize }}</th>
+                                                <th>{{ 'TAXE FONCIÈRE SUR LES PROPRIÉTÉS NON BÂTIES'|capitalize }}</th>
+                                                <th>{{ 'EMPRUNTS BANCAIRES ET DETTES ASSIMILÉES'|capitalize }}</th>
+                                                <th>{{ 'SUBVENTIONS REÇUES'|capitalize }}</th>
+                                                <th>{{ 'DÉPENSES D\'ÉQUIPEMENT'|capitalize }}</th>
+                                                <th>{{ 'REMBOURSEMENT D\'EMPRUNTS ET DETTES ASSIMILÉES'|capitalize }}</th>
+                                                <th>{{ 'ANNUITÉ DE LA DETTE'|capitalize }}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for accounting in taxAccountingData['communeFinancials'] %}
+                                                <tr>
+                                                    <td>{{ accounting.year }}</td>
+                                                    <td>{{ accounting.codeInsee }}</td>
+                                                    <td>{{ accounting.population|number_format(0, ' ', ' ') }}</td>
+                                                    <td>{{ accounting.groupingType }}</td>
+                                                    <td>{{ accounting.productsTotal|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.localTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.otherTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.globalAllocation|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.totalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.personalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.externalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.financialExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.grants|number_format(0, '.', '') }} €</td>
+                                                    <td>{{ accounting.housingTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.propertyTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.noPropertyTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.brankCredits|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.receivedGrants|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.equipmentExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.creditRefund|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ accounting.debtAnnuity|number_format(0, '.', ' ') }} €</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="accounting-department" role="tabpanel"
+                                     aria-labelledby="tax-dep-tab">
+                                    <div class="table-responsive p-2">
+                                        <table class="table table-bordered text-center"
+                                               style="width: 100%">
+                                            <thead>
+                                            <tr class="text-white bg-primary text-left">
+                                                <th colspan="22" style="padding-left: 200px">
+                                                    Département: {{ electedMember.departmentCode ~ ' - ' ~ electedMember.departmentLabel|upper }}
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Année
+                                                </th>
+                                                <th>
+                                                    Code Insee
+                                                </th>
+                                                <th>
+                                                    Commune
+                                                </th>
+                                                <th>
+                                                    Type groupement
+                                                </th>
+                                                <th>
+                                                    Population légale
+                                                </th>
+                                                <th>{{ 'TOTAL DES PRODUITS DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'IMPÔTS LOCAUX'|capitalize }}</th>
+                                                <th>{{ 'AUTRES IMPÔTS ET TAXES'|capitalize }}</th>
+                                                <th>{{ 'DOTATION GLOBALE DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'TOTAL DES CHARGES DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'CHARGES DE PERSONNEL'|capitalize }}</th>
+                                                <th>{{ 'ACHATS ET CHARGES EXTERNES'|capitalize }}</th>
+                                                <th>{{ 'CHARGES FINANCIÈRES'|capitalize }}</th>
+                                                <th>{{ 'SUBVENTIONS VERSÉES'|capitalize }}</th>
+                                                <th>{{ 'TAXE D\'HABITATION (Y COMPRIS THLV)'|capitalize }}</th>
+                                                <th>{{ 'TAXE FONCIÈRE SUR LES PROPRIÉTÉS BÂTIES'|capitalize }}</th>
+                                                <th>{{ 'TAXE FONCIÈRE SUR LES PROPRIÉTÉS NON BÂTIES'|capitalize }}</th>
+                                                <th>{{ 'EMPRUNTS BANCAIRES ET DETTES ASSIMILÉES'|capitalize }}</th>
+                                                <th>{{ 'SUBVENTIONS REÇUES'|capitalize }}</th>
+                                                <th>{{ 'DÉPENSES D\'ÉQUIPEMENT'|capitalize }}</th>
+                                                <th>{{ 'REMBOURSEMENT D\'EMPRUNTS ET DETTES ASSIMILÉES'|capitalize }}</th>
+                                                <th>{{ 'ANNUITÉ DE LA DETTE'|capitalize }}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for key,departmentFinancials in taxAccountingData['departmentFinancials']['data'] %}
+                                                {% set total = taxAccountingData['departmentFinancials']['totals'][key] %}
+                                                <tr class="text-white text-left" style="background-color: #1E90FF">
+                                                    <th colspan="22">
+                                                        Commune: {{total.codeInsee ~ ' - ' ~ total.communeLabel|upper }}
+                                                    </th>
+                                                </tr>
+                                                <tr class="text-white text-center" style="background-color: #BB0B0B">
+                                                    <td colspan="5">{{ total.title }}</td>
+                                                    <td>{{ total.productsTotal|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.localTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.otherTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.globalAllocation|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.totalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.personalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.externalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.financialExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.grants|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.housingTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.propertyTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.noPropertyTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.brankCredits|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.receivedGrants|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.equipmentExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.creditRefund|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.debtAnnuity|number_format(0, '.', ' ') }} €</td>
+                                                </tr>
+                                                {% for accounting in departmentFinancials %}
+                                                    <tr>
+                                                        <td>{{ accounting.year }}</td>
+                                                        <td>{{ accounting.codeInsee }}</td>
+                                                        <td>{{ accounting.communeLabel }}</td>
+                                                        <td>{{ accounting.groupingType }}</td>
+                                                        <td>{{ accounting.population|number_format(0, ' ', ' ') }}</td>
+                                                        <td>{{ accounting.productsTotal|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.localTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.otherTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.globalAllocation|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.totalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.personalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.externalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.financialExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.grants|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.housingTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.propertyTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.noPropertyTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.brankCredits|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.receivedGrants|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.equipmentExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.creditRefund|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.debtAnnuity|number_format(0, '.', ' ') }} €</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="accounting-area" role="tabpanel"
+                                     aria-labelledby="tax-area-tab">
+                                    <div class="table-responsive p-2">
+                                        <table class="table table-bordered text-center"
+                                               style="width: 100%">
+                                            <thead>
+                                            <tr class="text-white bg-primary text-left">
+                                                <th colspan="23" style="padding-left: 200px">
+                                                    Région: {{ electedMember.areaLabel|upper }}
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Année
+                                                </th>
+                                                <th>
+                                                    Code Insee
+                                                </th>
+                                                <th>
+                                                    Commune
+                                                </th>
+                                                <th>
+                                                    Département
+                                                </th>
+
+                                                <th>
+                                                    Type groupement
+                                                </th>
+                                                <th>
+                                                    Population légale
+                                                </th>
+                                                <th>{{ 'TOTAL DES PRODUITS DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'IMPÔTS LOCAUX'|capitalize }}</th>
+                                                <th>{{ 'AUTRES IMPÔTS ET TAXES'|capitalize }}</th>
+                                                <th>{{ 'DOTATION GLOBALE DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'TOTAL DES CHARGES DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'CHARGES DE PERSONNEL'|capitalize }}</th>
+                                                <th>{{ 'ACHATS ET CHARGES EXTERNES'|capitalize }}</th>
+                                                <th>{{ 'CHARGES FINANCIÈRES'|capitalize }}</th>
+                                                <th>{{ 'SUBVENTIONS VERSÉES'|capitalize }}</th>
+                                                <th>{{ 'TAXE D\'HABITATION (Y COMPRIS THLV)'|capitalize }}</th>
+                                                <th>{{ 'TAXE FONCIÈRE SUR LES PROPRIÉTÉS BÂTIES'|capitalize }}</th>
+                                                <th>{{ 'TAXE FONCIÈRE SUR LES PROPRIÉTÉS NON BÂTIES'|capitalize }}</th>
+                                                <th>{{ 'EMPRUNTS BANCAIRES ET DETTES ASSIMILÉES'|capitalize }}</th>
+                                                <th>{{ 'SUBVENTIONS REÇUES'|capitalize }}</th>
+                                                <th>{{ 'DÉPENSES D\'ÉQUIPEMENT'|capitalize }}</th>
+                                                <th>{{ 'REMBOURSEMENT D\'EMPRUNTS ET DETTES ASSIMILÉES'|capitalize }}</th>
+                                                <th>{{ 'ANNUITÉ DE LA DETTE'|capitalize }}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for key,areaFinancials in taxAccountingData['areaFinancials']['data'] %}
+                                                {% set total = taxAccountingData['areaFinancials']['totals'][key] %}
+                                                <tr class="text-white text-left" style="background-color: #1E90FF">
+                                                    <th colspan="23">
+                                                        {{ total.departmentLabel|upper }}
+                                                    </th>
+                                                </tr>
+                                                <tr class="text-white text-center" style="background-color: #BB0B0B">
+                                                    <td colspan="6">{{ total.title }}</td>
+                                                    <td>{{ total.productsTotal|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.localTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.otherTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.globalAllocation|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.totalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.personalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.externalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.financialExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.grants|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.housingTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.propertyTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.noPropertyTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.brankCredits|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.receivedGrants|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.equipmentExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.creditRefund|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.debtAnnuity|number_format(0, '.', ' ') }} €</td>
+                                                </tr>
+                                                {% for accounting in areaFinancials %}
+                                                    <tr>
+                                                        <td>{{ accounting.year }}</td>
+                                                        <td>{{ accounting.codeInsee }}</td>
+                                                        <td>{{ accounting.communeLabel }}</td>
+                                                        <td>{{ accounting.departmentLabel }}</td>
+                                                        <td>{{ accounting.groupingType }}</td>
+                                                        <td>{{ accounting.population|number_format(0, ' ', ' ') }}</td>
+                                                        <td>{{ accounting.productsTotal|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.localTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.otherTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.globalAllocation|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.totalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.personalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.externalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.financialExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.grants|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.housingTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.propertyTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.noPropertyTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.brankCredits|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.receivedGrants|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.equipmentExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.creditRefund|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.debtAnnuity|number_format(0, '.', ' ') }} €</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="tax" role="tabpanel"
+                             aria-labelledby="tax-tab">
+
+                            <ul class="nav nav-tabs" id="taxTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="tax-commune-tab"
+                                       data-toggle="tab"
+                                       href="#tax-commune" role="tab"
+                                       aria-controls="tax-commune-tab" aria-selected="true">
+                                        Chiffres clés de la commune
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="tax-dep-tab" data-toggle="tab"
+                                       href="#tax-department" role="tab"
+                                       aria-controls="tax-dep-atb" aria-selected="true">
+                                        Chiffres clés du département
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="tax-area-tab" data-toggle="tab"
+                                       href="#tax-area" role="tab" aria-controls="tax-area-tab"
+                                       aria-selected="true">
+                                        Chiffres clés de la région
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" id="taxSubContent">
+                                <div class="tab-pane fade show active" id="tax-commune"
+                                     role="tabpanel"
+                                     aria-labelledby="tax-commune-tab">
+                                    <div class="table-responsive p-2">
+                                        <table class="table table-bordered text-center"
+                                               style="width: 100%">
+                                            <thead>
+                                            <tr>
+                                                <th>
+                                                    Année
+                                                </th>
+                                                <th>
+                                                    Code Insee
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS FISCAUX">
+                                                    {{ 'NOMBRE DE FOYERS FISCAUX'|capitalize }}
+                                                </th>
+                                                <th title="REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX">
+                                                    {{'REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX'|capitalize}}
+                                                </th>
+                                                <th title="MONTANT IMPÔT NET TOTAL">
+                                                    {{ 'MONTANT IMPÔT NET TOTAL'|capitalize }}
+                                                </th>
+                                                <th title="">
+                                                    {{ 'NOMBRE DE FOYERS FISCAUX IMPOSABLE'|capitalize }}
+                                                </th>
+                                                <th title="REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX IMPOSÉS">
+                                                    {{ 'REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX IMPOSÉS'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES">
+                                                    {{ 'NOMBRE DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES'|capitalize }}
+                                                </th>
+                                                <th title="MONTANT DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES">
+                                                    {{ 'MONTANT DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS CONCERNÉS RETRAITES ET PENSIONS">
+                                                    {{ 'NOMBRE DE FOYERS CONCERNÉS RETRAITES ET PENSIONS'|capitalize }}
+                                                </th>
+                                                <th title="MONTANT DE FOYERS CONCERNÉS RETRAITES ET PENSIONS">
+                                                    {{ 'MONTANT DE FOYERS CONCERNÉS RETRAITES ET PENSIONS'|capitalize }}
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for tax in taxAccountingData['communeTaxes'] %}
+                                                <tr>
+                                                    <td>{{ tax.year }}</td>
+                                                    <td>{{ tax.codeInsee }}</td>
+                                                    <td>{{ tax.nbTaxHomes }}</td>
+                                                    <td>{{ tax.taxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ tax.totalAmount|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ tax.nbImposableTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ tax.imposableTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ tax.salaryNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ tax.salaryTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ tax.pensionNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ tax.pensionTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="tax-department" role="tabpanel"
+                                     aria-labelledby="tax-dep-tab">
+                                    <div class="table-responsive p-2">
+                                        <table class="table table-bordered text-center"
+                                               style="width: 100%">
+                                            <thead>
+                                             <tr class="text-white bg-primary text-left">
+                                                <th colspan="12" style="padding-left: 200px">
+                                                    Département: {{ electedMember.departmentCode ~ ' - ' ~ electedMember.departmentLabel|upper }}
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Année
+                                                </th>
+                                                <th>
+                                                    Code Insee
+                                                </th>
+                                                <th>
+                                                    Commune
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS FISCAUX">
+                                                    {{ 'NOMBRE DE FOYERS FISCAUX'|capitalize }}
+                                                </th>
+                                                <th title="REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX">
+                                                    {{'REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX'|capitalize}}
+                                                </th>
+                                                <th title="MONTANT IMPÔT NET TOTAL">
+                                                    {{ 'MONTANT IMPÔT NET TOTAL'|capitalize }}
+                                                </th>
+                                                <th title="">
+                                                    {{ 'NOMBRE DE FOYERS FISCAUX IMPOSABLE'|capitalize }}
+                                                </th>
+                                                <th title="REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX IMPOSÉS">
+                                                    {{ 'REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX IMPOSÉS'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES">
+                                                    {{ 'NOMBRE DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES'|capitalize }}
+                                                </th>
+                                                <th title="MONTANT DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES">
+                                                    {{ 'MONTANT DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS CONCERNÉS RETRAITES ET PENSIONS">
+                                                    {{ 'NOMBRE DE FOYERS CONCERNÉS RETRAITES ET PENSIONS'|capitalize }}
+                                                </th>
+                                                <th title="MONTANT DE FOYERS CONCERNÉS RETRAITES ET PENSIONS">
+                                                    {{ 'MONTANT DE FOYERS CONCERNÉS RETRAITES ET PENSIONS'|capitalize }}
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            {% for key, departmentTaxes in taxAccountingData['departmentTaxes']['data'] %}
+                                                {% set total = taxAccountingData['departmentTaxes']['totals'][key] %}
+                                                <tr class="text-white text-left" style="background-color: #1E90FF">
+                                                    <th colspan="12">
+                                                        Commune: {{total.codeInsee ~ ' - ' ~ total.communeLabel|upper }}
+                                                    </th>
+                                                </tr>
+                                                <tr class="text-white text-center" style="background-color: #BB0B0B">
+                                                    <td colspan="3">{{ total.title }}</td>
+                                                    <td>{{ total.nbTaxHomes|number_format(0, ' ', ' ') }}</td>
+                                                    <td>{{ total.taxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.totalAmount|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.nbImposableTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ total.imposableTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.salaryNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ total.salaryTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.pensionNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ total.pensionTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                </tr>
+                                                {% for tax in departmentTaxes %}
+                                                    <tr>
+                                                        <td>{{ tax.year }}</td>
+                                                        <td>{{ tax.codeInsee }}</td>
+                                                        <td>{{ tax.communeLabel }}</td>
+                                                        <td>{{ tax.nbTaxHomes }}</td>
+                                                        <td>{{ tax.taxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ tax.totalAmount|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ tax.nbImposableTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ tax.imposableTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ tax.salaryNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ tax.salaryTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ tax.pensionNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ tax.pensionTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="tax-area" role="tabpanel"
+                                     aria-labelledby="tax-area-tab">
+                                    <div class="table-responsive p-2">
+                                        <table class="table table-bordered text-center"
+                                               style="width: 100%">
+                                            <thead>
+                                            <tr class="text-white bg-primary text-left">
+                                                <th colspan="13" style="padding-left: 200px">
+                                                   Région: {{ electedMember.areaLabel|upper }}
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Année
+                                                </th>
+                                                <th>
+                                                    Code Insee
+                                                </th>
+                                                <th>
+                                                    Commune
+                                                </th>
+                                                <th>
+                                                    Département
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS FISCAUX">
+                                                    {{ 'NOMBRE DE FOYERS FISCAUX'|capitalize }}
+                                                </th>
+                                                <th title="REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX">
+                                                    {{'REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX'|capitalize}}
+                                                </th>
+                                                <th title="MONTANT IMPÔT NET TOTAL">
+                                                    {{ 'MONTANT IMPÔT NET TOTAL'|capitalize }}
+                                                </th>
+                                                <th title="">
+                                                    {{ 'NOMBRE DE FOYERS FISCAUX IMPOSABLE'|capitalize }}
+                                                </th>
+                                                <th title="REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX IMPOSÉS">
+                                                    {{ 'REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX IMPOSÉS'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES">
+                                                    {{ 'NOMBRE DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES'|capitalize }}
+                                                </th>
+                                                <th title="MONTANT DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES">
+                                                    {{ 'MONTANT DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS CONCERNÉS RETRAITES ET PENSIONS">
+                                                    {{ 'NOMBRE DE FOYERS CONCERNÉS RETRAITES ET PENSIONS'|capitalize }}
+                                                </th>
+                                                <th title="MONTANT DE FOYERS CONCERNÉS RETRAITES ET PENSIONS">
+                                                    {{ 'MONTANT DE FOYERS CONCERNÉS RETRAITES ET PENSIONS'|capitalize }}
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for key, areaTaxes in taxAccountingData['areaTaxes']['data'] %}
+                                                    {% set total = taxAccountingData['areaTaxes']['totals'][key] %}
+                                                    <tr class="text-white text-left" style="background-color: #1E90FF">
+                                                        <th colspan="13">
+                                                            {{total.departmentLabel|upper }}
+                                                        </th>
+                                                    </tr>
+                                                    <tr class="text-white text-center" style="background-color: #BB0B0B">
+                                                        <td colspan="4">{{ total.title }}</td>
+                                                        <td>{{ total.nbTaxHomes|number_format(0, ' ', ' ') }}</td>
+                                                        <td>{{ total.taxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ total.totalAmount|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ total.nbImposableTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ total.imposableTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ total.salaryNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ total.salaryTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ total.pensionNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ total.pensionTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    </tr>
+                                                    {% for tax in areaTaxes %}
+                                                        <tr>
+                                                            <td>{{ tax.year }}</td>
+                                                            <td>{{ tax.codeInsee }}</td>
+                                                            <td>{{ tax.communeLabel }}</td>
+                                                            <td>{{ tax.departmentLabel }}</td>
+                                                            <td>{{ tax.nbTaxHomes|number_format(0, ' ', ' ') }}</td>
+                                                            <td>{{ tax.taxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                            <td>{{ tax.totalAmount|number_format(0,'.', ' ') }} €</td>
+                                                            <td>{{ tax.nbImposableTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                            <td>{{ tax.imposableTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                            <td>{{ tax.salaryNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                            <td>{{ tax.salaryTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                            <td>{{ tax.pensionNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                            <td>{{ tax.pensionTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                {% endfor %}
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="card mb-3">
+            <div class="card-header bg-primary border-0" style="background-color: #0F056B">
+                <h5 class="mb-0">
+                    <a class="btn btn-link text-white font-weight-bolder d-flex flex-row align-items-center"
+                       data-toggle="collapse" data-target="#accountingsTaxes"
+                       aria-expanded="true"
+                       aria-controls="boardMinutes">
+                        <i class="fas fa-chart-line fa-2x mr-3"></i> {{ 'Chiffres clés des données financières et fiscales '|capitalize }}
+                        <i class="ml-3 fa fa-arrow-right"></i>
+                    </a>
+                </h5>
+            </div>
+            <div id="accountingsTaxes" class="collapse">
+                <div class="card-body">
+<h4 class="my-3" style="ml-5">
+                        {{ source ? 'Source : ' ~ source : '' }}
+                    </h4>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="accounting-tab" data-toggle="tab"
+                               href="#accounting" role="tab" aria-controls="accounting"
+                               aria-selected="true">
+                                1°) Comptes comptables
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="tax-tab" data-toggle="tab" href="#tax"
+                               role="tab" aria-controls="tax" aria-selected="false">
+                                2°) Impôt sur le revenu
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="accounting" role="tabpanel"
+                             aria-labelledby="accounting-tab">
+                            <ul class="nav nav-tabs" id="accountingTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="accounting-dep-tab" data-toggle="tab"
+                                       href="#accounting-department" role="tab"
+                                       aria-controls="accounting-dep-atb" aria-selected="true">
+                                        Chiffres clés du département
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="accounting-area-tab" data-toggle="tab"
+                                       href="#accounting-area" role="tab" aria-controls="accounting-area-tab"
+                                       aria-selected="true">
+                                        Chiffres clés de la région
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="accountingSubContent">
+                                <div class="tab-pane fade show active" id="accounting-department" role="tabpanel"
+                                     aria-labelledby="tax-dep-tab">
+                                    <div class="table-responsive p-2">
+                                        <table class="table table-bordered text-center"
+                                               style="width: 100%">
+                                            <thead>
+                                            <tr class="text-white bg-primary text-left">
+                                                <th colspan="22" style="padding-left: 200px">
+                                                    Département: {{ electedMember.departmentCode ~ ' - ' ~ electedMember.departmentLabel|upper }}
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Année
+                                                </th>
+                                                <th>
+                                                    Code Insee
+                                                </th>
+                                                <th>
+                                                    Commune
+                                                </th>
+                                                <th>
+                                                    Type groupement
+                                                </th>
+                                                <th>
+                                                    Population légale
+                                                </th>
+                                                <th>{{ 'TOTAL DES PRODUITS DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'IMPÔTS LOCAUX'|capitalize }}</th>
+                                                <th>{{ 'AUTRES IMPÔTS ET TAXES'|capitalize }}</th>
+                                                <th>{{ 'DOTATION GLOBALE DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'TOTAL DES CHARGES DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'CHARGES DE PERSONNEL'|capitalize }}</th>
+                                                <th>{{ 'ACHATS ET CHARGES EXTERNES'|capitalize }}</th>
+                                                <th>{{ 'CHARGES FINANCIÈRES'|capitalize }}</th>
+                                                <th>{{ 'SUBVENTIONS VERSÉES'|capitalize }}</th>
+                                                <th>{{ 'TAXE D\'HABITATION (Y COMPRIS THLV)'|capitalize }}</th>
+                                                <th>{{ 'TAXE FONCIÈRE SUR LES PROPRIÉTÉS BÂTIES'|capitalize }}</th>
+                                                <th>{{ 'TAXE FONCIÈRE SUR LES PROPRIÉTÉS NON BÂTIES'|capitalize }}</th>
+                                                <th>{{ 'EMPRUNTS BANCAIRES ET DETTES ASSIMILÉES'|capitalize }}</th>
+                                                <th>{{ 'SUBVENTIONS REÇUES'|capitalize }}</th>
+                                                <th>{{ 'DÉPENSES D\'ÉQUIPEMENT'|capitalize }}</th>
+                                                <th>{{ 'REMBOURSEMENT D\'EMPRUNTS ET DETTES ASSIMILÉES'|capitalize }}</th>
+                                                <th>{{ 'ANNUITÉ DE LA DETTE'|capitalize }}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for key,departmentFinancials in taxAccountingData['departmentFinancials']['data'] %}
+                                                {% set total = taxAccountingData['departmentFinancials']['totals'][key] %}
+                                                <tr class="text-white text-left" style="background-color: #1E90FF">
+                                                    <th colspan="23">
+                                                        Commune: {{total.codeInsee ~ ' - ' ~ total.communeLabel|upper }}
+                                                    </th>
+                                                </tr>
+                                                <tr class="text-white text-center" style="background-color: #BB0B0B">
+                                                    <td colspan="5">{{ total.title }}</td>
+                                                    <td>{{ total.productsTotal|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.localTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.otherTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.globalAllocation|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.totalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.personalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.externalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.financialExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.grants|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.housingTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.propertyTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.noPropertyTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.brankCredits|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.receivedGrants|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.equipmentExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.creditRefund|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.debtAnnuity|number_format(0, '.', ' ') }} €</td>
+                                                </tr>
+                                                {% for accounting in departmentFinancials %}
+                                                    <tr>
+                                                        <td>{{ accounting.year }}</td>
+                                                        <td>{{ accounting.codeInsee }}</td>
+                                                        <td>{{ accounting.communeLabel }}</td>
+                                                        <td>{{ accounting.groupingType }}</td>
+                                                        <td>{{ accounting.population|number_format(0, ' ', ' ') }}</td>
+                                                        <td>{{ accounting.productsTotal|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.localTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.otherTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.globalAllocation|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.totalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.personalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.externalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.financialExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.grants|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.housingTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.propertyTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.noPropertyTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.brankCredits|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.receivedGrants|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.equipmentExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.creditRefund|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.debtAnnuity|number_format(0, '.', ' ') }} €</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="accounting-area" role="tabpanel"
+                                     aria-labelledby="tax-area-tab">
+                                    <div class="table-responsive p-2">
+                                        <table class="table table-bordered text-center"
+                                               style="width: 100%">
+                                            <thead>
+                                            <tr class="text-white bg-primary text-left">
+                                                <th colspan="23" style="padding-left: 200px">
+                                                    Région: {{ electedMember.areaLabel|upper }}
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Année
+                                                </th>
+                                                <th>
+                                                    Code Insee
+                                                </th>
+                                                <th>
+                                                    Commune
+                                                </th>
+                                                <th>
+                                                    Département
+                                                </th>
+                                                <th>
+                                                    Type groupement
+                                                </th>
+                                                <th>
+                                                    Population légale
+                                                </th>
+                                                <th>{{ 'TOTAL DES PRODUITS DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'IMPÔTS LOCAUX'|capitalize }}</th>
+                                                <th>{{ 'AUTRES IMPÔTS ET TAXES'|capitalize }}</th>
+                                                <th>{{ 'DOTATION GLOBALE DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'TOTAL DES CHARGES DE FONCTIONNEMENT'|capitalize }}</th>
+                                                <th>{{ 'CHARGES DE PERSONNEL'|capitalize }}</th>
+                                                <th>{{ 'ACHATS ET CHARGES EXTERNES'|capitalize }}</th>
+                                                <th>{{ 'CHARGES FINANCIÈRES'|capitalize }}</th>
+                                                <th>{{ 'SUBVENTIONS VERSÉES'|capitalize }}</th>
+                                                <th>{{ 'TAXE D\'HABITATION (Y COMPRIS THLV)'|capitalize }}</th>
+                                                <th>{{ 'TAXE FONCIÈRE SUR LES PROPRIÉTÉS BÂTIES'|capitalize }}</th>
+                                                <th>{{ 'TAXE FONCIÈRE SUR LES PROPRIÉTÉS NON BÂTIES'|capitalize }}</th>
+                                                <th>{{ 'EMPRUNTS BANCAIRES ET DETTES ASSIMILÉES'|capitalize }}</th>
+                                                <th>{{ 'SUBVENTIONS REÇUES'|capitalize }}</th>
+                                                <th>{{ 'DÉPENSES D\'ÉQUIPEMENT'|capitalize }}</th>
+                                                <th>{{ 'REMBOURSEMENT D\'EMPRUNTS ET DETTES ASSIMILÉES'|capitalize }}</th>
+                                                <th>{{ 'ANNUITÉ DE LA DETTE'|capitalize }}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for key,areaFinancials in taxAccountingData['areaFinancials']['data'] %}
+                                                {% set total = taxAccountingData['areaFinancials']['totals'][key] %}
+                                                <tr class="text-white text-left" style="background-color: #1E90FF">
+                                                    <th colspan="23">
+                                                        {{ total.departmentLabel|upper }}
+                                                    </th>
+                                                </tr>
+                                                <tr class="text-white text-center" style="background-color: #BB0B0B">
+                                                    <td colspan="6">{{ total.title }}</td>
+                                                    <td>{{ total.productsTotal|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.localTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.otherTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.globalAllocation|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.totalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.personalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.externalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.financialExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.grants|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.housingTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.propertyTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.noPropertyTax|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.brankCredits|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.receivedGrants|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.equipmentExpenses|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.creditRefund|number_format(0, '.', ' ') }} €</td>
+                                                    <td>{{ total.debtAnnuity|number_format(0, '.', ' ') }} €</td>
+                                                </tr>
+                                                {% for accounting in areaFinancials %}
+                                                    <tr>
+                                                        <td>{{ accounting.year }}</td>
+                                                        <td>{{ accounting.codeInsee }}</td>
+                                                        <td>{{ accounting.communeLabel }}</td>
+                                                        <td>{{ accounting.departmentLabel }}</td>
+                                                        <td>{{ accounting.groupingType }}</td>
+                                                        <td>{{ accounting.population|number_format(0, ' ', ' ') }}</td>
+                                                        <td>{{ accounting.productsTotal|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.localTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.otherTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.globalAllocation|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.totalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.personalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.externalExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.financialExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.grants|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.housingTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.propertyTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.noPropertyTax|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.brankCredits|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.receivedGrants|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.equipmentExpenses|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.creditRefund|number_format(0, '.', ' ') }} €</td>
+                                                        <td>{{ accounting.debtAnnuity|number_format(0, '.', ' ') }} €</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tax" role="tabpanel"
+                             aria-labelledby="tax-tab">
+                            <ul class="nav nav-tabs" id="taxTab" role="tablist">
+
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="tax-dep-tab" data-toggle="tab"
+                                       href="#tax-department" role="tab"
+                                       aria-controls="tax-dep-atb" aria-selected="true">
+                                        Chiffres clés du département
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="tax-area-tab" data-toggle="tab"
+                                       href="#tax-area" role="tab" aria-controls="tax-area-tab"
+                                       aria-selected="true">
+                                        Chiffres clés de la région
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="taxSubContent">
+
+                                <div class="tab-pane fade show active" id="tax-department" role="tabpanel"
+                                     aria-labelledby="tax-dep-tab">
+                                    <div class="table-responsive p-2">
+                                        <table class="table table-bordered text-center"
+                                               style="width: 100%">
+                                            <thead>
+                                            <tr class="text-white bg-primary text-left">
+                                                <th colspan="12" style="padding-left: 200px">
+                                                    Département: {{ electedMember.departmentCode ~ ' - ' ~ electedMember.departmentLabel|upper }}
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Année
+                                                </th>
+                                                <th>
+                                                    Code Insee
+                                                </th>
+                                                <th>
+                                                    Commune
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS FISCAUX">
+                                                    {{ 'NOMBRE DE FOYERS FISCAUX'|capitalize }}
+                                                </th>
+                                                <th title="REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX">
+                                                    {{'REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX'|capitalize}}
+                                                </th>
+                                                <th title="MONTANT IMPÔT NET TOTAL">
+                                                    {{ 'MONTANT IMPÔT NET TOTAL'|capitalize }}
+                                                </th>
+                                                <th title="">
+                                                    {{ 'NOMBRE DE FOYERS FISCAUX IMPOSABLE'|capitalize }}
+                                                </th>
+                                                <th title="REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX IMPOSÉS">
+                                                    {{ 'REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX IMPOSÉS'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES">
+                                                    {{ 'NOMBRE DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES'|capitalize }}
+                                                </th>
+                                                <th title="MONTANT DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES">
+                                                    {{ 'MONTANT DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS CONCERNÉS RETRAITES ET PENSIONS">
+                                                    {{ 'NOMBRE DE FOYERS CONCERNÉS RETRAITES ET PENSIONS'|capitalize }}
+                                                </th>
+                                                <th title="MONTANT DE FOYERS CONCERNÉS RETRAITES ET PENSIONS">
+                                                    {{ 'MONTANT DE FOYERS CONCERNÉS RETRAITES ET PENSIONS'|capitalize }}
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for key, departmentTaxes in taxAccountingData['departmentTaxes']['data'] %}
+                                                {% set total = taxAccountingData['departmentTaxes']['totals'][key] %}
+                                                <tr class="text-white text-left" style="background-color: #1E90FF">
+                                                    <th colspan="12">
+                                                        Commune: {{total.codeInsee ~ ' - ' ~ total.communeLabel|upper }}
+                                                    </th>
+                                                </tr>
+                                                <tr class="text-white text-center" style="background-color: #BB0B0B">
+                                                    <td colspan="3">{{ total.title }}</td>
+                                                    <td>{{ total.nbTaxHomes|number_format(0, ' ', ' ') }}</td>
+                                                    <td>{{ total.taxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.totalAmount|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.nbImposableTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ total.imposableTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.salaryNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ total.salaryTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.pensionNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ total.pensionTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                </tr>
+                                                {% for tax in departmentTaxes %}
+                                                    <tr>
+                                                        <td>{{ tax.year }}</td>
+                                                        <td>{{ tax.codeInsee }}</td>
+                                                        <td>{{ tax.communeLabel }}</td>
+                                                        <td>{{ tax.nbTaxHomes }}</td>
+                                                        <td>{{ tax.taxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ tax.totalAmount|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ tax.nbImposableTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ tax.imposableTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ tax.salaryNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ tax.salaryTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ tax.pensionNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ tax.pensionTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="tax-area" role="tabpanel"
+                                     aria-labelledby="tax-area-tab">
+                                    <div class="table-responsive p-2">
+                                        <table class="table table-bordered text-center"
+                                               style="width: 100%">
+                                            <thead>
+                                            <tr class="text-white bg-primary text-left">
+                                                <th colspan="13" style="padding-left: 200px">
+                                                    Région: {{ electedMember.areaLabel|upper }}
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Année
+                                                </th>
+                                                <th>
+                                                    Code Insee
+                                                </th>
+                                                <th>
+                                                    Commune
+                                                </th>
+                                                <th>
+                                                    Département
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS FISCAUX">
+                                                    {{ 'NOMBRE DE FOYERS FISCAUX'|capitalize }}
+                                                </th>
+                                                <th title="REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX">
+                                                    {{'REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX'|capitalize}}
+                                                </th>
+                                                <th title="MONTANT IMPÔT NET TOTAL">
+                                                    {{ 'MONTANT IMPÔT NET TOTAL'|capitalize }}
+                                                </th>
+                                                <th title="">
+                                                    {{ 'NOMBRE DE FOYERS FISCAUX IMPOSABLE'|capitalize }}
+                                                </th>
+                                                <th title="REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX IMPOSÉS">
+                                                    {{ 'REVENU FISCAL DE RÉFÉRENCE DES FOYERS FISCAUX IMPOSÉS'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES">
+                                                    {{ 'NOMBRE DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES'|capitalize }}
+                                                </th>
+                                                <th title="MONTANT DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES">
+                                                    {{ 'MONTANT DE FOYERS CONCERNÉS PAR TRAITEMENTS ET SALAIRES'|capitalize }}
+                                                </th>
+                                                <th title="NOMBRE DE FOYERS CONCERNÉS RETRAITES ET PENSIONS">
+                                                    {{ 'NOMBRE DE FOYERS CONCERNÉS RETRAITES ET PENSIONS'|capitalize }}
+                                                </th>
+                                                <th title="MONTANT DE FOYERS CONCERNÉS RETRAITES ET PENSIONS">
+                                                    {{ 'MONTANT DE FOYERS CONCERNÉS RETRAITES ET PENSIONS'|capitalize }}
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for key, areaTaxes in taxAccountingData['areaTaxes']['data'] %}
+                                                {% set total = taxAccountingData['areaTaxes']['totals'][key] %}
+                                                <tr class="text-white text-left" style="background-color: #1E90FF">
+                                                    <th colspan="13">
+                                                        {{total.departmentLabel|upper }}
+                                                    </th>
+                                                </tr>
+                                                <tr class="text-white text-center" style="background-color: #BB0B0B">
+                                                    <td colspan="4">{{ total.title }}</td>
+                                                    <td>{{ total.nbTaxHomes|number_format(0, ' ', ' ') }}</td>
+                                                    <td>{{ total.taxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.totalAmount|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.nbImposableTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ total.imposableTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.salaryNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ total.salaryTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    <td>{{ total.pensionNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                    <td>{{ total.pensionTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                </tr>
+                                                {% for key, areaTaxes in taxAccountingData['areaTaxes']['data'] %}
+                                                    {% set total = taxAccountingData['areaTaxes']['totals'][key] %}
+                                                    <tr class="text-white text-left" style="background-color: #1E90FF">
+                                                        <th colspan="13">
+                                                            {{total.departmentLabel|upper }}
+                                                        </th>
+                                                    </tr>
+                                                    <tr class="text-white text-center" style="background-color: #BB0B0B">
+                                                        <td colspan="4">{{ total.title }}</td>
+                                                        <td>{{ total.nbTaxHomes|number_format(0, ' ', ' ') }}</td>
+                                                        <td>{{ total.taxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ total.totalAmount|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ total.nbImposableTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ total.imposableTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ total.salaryNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ total.salaryTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        <td>{{ total.pensionNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                        <td>{{ total.pensionTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                    </tr>
+                                                    {% for tax in areaTaxes %}
+                                                        <tr>
+                                                            <td>{{ tax.year }}</td>
+                                                            <td>{{ tax.codeInsee }}</td>
+                                                            <td>{{ tax.communeLabel }}</td>
+                                                            <td>{{ tax.departmentLabel }}</td>
+                                                            <td>{{ tax.nbTaxHomes|number_format(0, ' ', ' ') }}</td>
+                                                            <td>{{ tax.taxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                            <td>{{ tax.totalAmount|number_format(0,'.', ' ') }} €</td>
+                                                            <td>{{ tax.nbImposableTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                            <td>{{ tax.imposableTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                            <td>{{ tax.salaryNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                            <td>{{ tax.salaryTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                            <td>{{ tax.pensionNbTaxHomes|number_format(0,' ', ' ') }}</td>
+                                                            <td>{{ tax.pensionTaxRevenue|number_format(0,'.', ' ') }} €</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}

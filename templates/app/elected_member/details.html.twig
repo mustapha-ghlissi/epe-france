@@ -1,0 +1,337 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block content %}
+    <div class="content pt-0">
+        <div class="position-absolute w-100" style="height: 45vh;">
+            <img class="img-fluid" style="object-fit: cover; height: 100%; width: 100%"
+                 src="{{ asset('build/images/banner.33b8f8a8.jpg') }}" alt="">
+        </div>
+        <div class="container position-relative" style="padding-top: 48vh">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-light border">
+                    <li class="breadcrumb-item"><a href="{{ path('app') }}">Accueil</a></li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('elected_members_list', {categoryName: categoryName}) }}">
+                            {% include 'app/_common/_list_name.html.twig' %}
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" area-current="page">évaluation</li>
+                </ol>
+            </nav>
+            <div class="row">
+                <div class="col">
+                    {% include 'app/_common/_flash_message.html.twig' %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {% if message %}
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">Félicitations !</h4>
+                            <p>
+                                {{ message }}
+                            </p>
+                        </div>
+                    {% else %}
+                        <div class="row">
+                            {% include 'app/elected_member/_details_title.html.twig' %}
+                            {% if categoryId != 6 %}
+                                <div class="col-lg-6">
+                                    <div class="card my-3">
+                                        <div class="card-header d-flex flex-row align-items-center border-0">
+                                            <div class="px-2 text-white rounded bg-primary font-weight-bolder"
+                                                 style="font-size: 19px;">
+                                                1
+                                            </div>
+                                            <h5 class="card-title m-0 ml-3">
+                                                Informations personnelles
+                                            </h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <div class="d-flex flex-lg-row flex-column align-items-center mb-3">
+                                                    <img class="elected-avatar mx-lg-0 mx-auto rounded-circle"
+                                                         src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}"
+                                                         alt="">
+
+                                                    <h4 class="ml-3">
+                                                        <b>{{ electedMember.firstName|capitalize ~ ' ' ~ electedMember.lastName|upper }}</b>
+                                                    </h4>
+                                                </div>
+                                                <table class="table table-bordered">
+                                                    <tr>
+                                                        <th>Sexe</th>
+                                                        <td>{{ electedMember.gender|capitalize }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Date de naissance</th>
+                                                        <td>{{ electedMember.birthDate ? electedMember.birthDate|date('d/m/Y') : '' }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Profession</th>
+                                                        <td>{{ electedMember.professionLabel|title }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Début du mandat</th>
+                                                        <td>{{ electedMember.mandateStartDate ? electedMember.mandateStartDate|date('d/m/Y') }}</td>
+                                                    </tr>
+                                                    {% if categoryId == 1 or categoryId == 2 or categoryId == 3 or categoryId == 4 or categoryId == 5  %}
+                                                        <tr>
+                                                            <th>Fonction de l'élu</th>
+                                                            <td>{{ electedMember.functionLabel ? electedMember.functionLabel|title : '-' }}</td>
+                                                        </tr>
+                                                    {% endif %}
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card my-3">
+                                        <div class="card-header d-flex flex-row align-items-center border-0">
+                                            <div class="px-2 text-white rounded bg-primary font-weight-bolder"
+                                                 style="font-size: 19px;">
+                                                2
+                                            </div>
+                                            <h5 class="card-title m-0 ml-3">
+                                                Informations géographiques
+                                            </h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    {% include 'app/elected_member/_geographic_details.html.twig' %}
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="col-12">
+                                    <div class="card my-3">
+                                        <div class="card-header d-flex flex-row align-items-center border-0">
+                                            <div class="px-2 text-white rounded bg-primary font-weight-bolder"
+                                                 style="font-size: 19px;">
+                                                1
+                                            </div>
+                                            <h5 class="card-title m-0 ml-3">
+                                                Infos personnelles
+                                            </h5>
+                                        </div>
+                                        <div class="card-body d-lg-flex flex-lg-row align-items-center">
+
+                                            <div class="text-center">
+                                                <img class="elected-avatar rounded-circle mb-3"
+                                                     src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+
+                                                <h4 class="ml-3">
+                                                    <b>{{ electedMember.firstName|capitalize ~ ' ' ~ electedMember.lastName|upper }}</b>
+                                                </h4>
+                                            </div>
+
+                                            <div class="d-flex align-items-center justify-content-center flex-fill">
+                                                <table class="mt-lg-0 mt-3 ml-lg-5 table w-auto">
+                                                    <tr>
+                                                        <th>Sexe</th>
+                                                        <td>{{ electedMember.gender|capitalize }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Date de naissance</th>
+                                                        <td>{{ electedMember.birthDate ? electedMember.birthDate|date('d/m/Y') : '' }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Profession</th>
+                                                        <td>{{ electedMember.professionLabel|title }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Début de mandat</th>
+                                                        <td>{{ electedMember.mandateStartDate ? electedMember.mandateStartDate|date('d/m/Y') }}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        {% if categoryId != 6 %}
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div id="map"
+                                                 data-position="{{ {lat: electedMember.latitude, lng: electedMember.longitude}|json_encode }}"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="row">
+                            <div class="col">
+                                <div class="card mb-3">
+                                    <div class="card-header bg-primary border-0">
+                                        <h5 class="mb-0">
+                                            <a class="btn btn-link font-weight-bolder d-flex flex-row align-items-center"
+                                               data-toggle="collapse" data-target="#boardMinutes" aria-expanded="true"
+                                               aria-controls="boardMinutes">
+                                                <i class="fa fa-archive fa-2x mr-3"></i>
+                                                {% include 'app/elected_member/_board_minute_title.html.twig' %}
+                                                <i class="ml-3 fa fa-arrow-right"></i>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="boardMinutes" class="collapse">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="dataTable table table-bordered ">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Titre
+                                                        </th>
+                                                        <th>
+                                                            Mois/Année
+                                                        </th>
+                                                        <th>
+                                                            Actions
+                                                        </th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for boardMinute in boardMinutes %}
+                                                        <tr>
+                                                            <td>
+                                                                {{ boardMinute.title|capitalize }}
+                                                            </td>
+                                                            <td>
+                                                                {{ boardMinute.month|capitalize ~ ' ' ~ boardMinute.year }}
+                                                            </td>
+                                                            <td>
+                                                                <ul class="list-unstyled d-inline-flex flex-row flex-wrap align-items-center justify-content-center">
+                                                                {% for fileName in boardMinute.fileNames %}
+                                                                    <li class="py-1">
+                                                                        <a href="{{ asset('uploads/boards_minutes/' ~ fileName ) }}"
+                                                                           target="_blank" download="" class="btn btn-link">
+                                                                            {{ fileName }} <i class="fa fa-download"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                {% endfor %}
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% include 'app/elected_member/_taxes_financials.html.twig' %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="card mb-3">
+                                    <div class="card-header d-flex flex-row align-items-center border-0">
+                                        <div class="px-2 text-white rounded bg-primary font-weight-bolder"
+                                             style="font-size: 19px;">
+                                            {{ categoryId != 6 ? '3' : '2' }}
+                                        </div>
+                                        <h5 class="card-title m-0 ml-3">
+                                            {{ 'évaluez '|capitalize ~ electedMember.firstName|capitalize ~ ' ' ~ electedMember.lastName|upper }}
+                                            depuis le début de son mandat
+                                        </h5>
+                                    </div>
+                                    <div class="card-body evaluation-form">
+                                        {% include 'app/elected_member/_form_vote.html.twig' %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                {% if extraData %}
+                                    <div class="card mb-3 extra-data-videos">
+                                        <div class="card-body">
+                                            {% for link in extraData.videos.links %}
+                                                {{ link|raw }}
+                                                <p class="card-text">
+                                                    {{ extraData.videos.descriptions[loop.index0] }}
+                                                </p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="extra-data-timelines">
+                                        {% for timeline in extraData.socialTimelines %}
+                                            <div class="card mb-3">
+                                                <div class="card-body">
+                                                    {{ timeline|raw }}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                {% for noteLink in noteLinks %}
+                                    {% if loop.index != categoryId %}
+                                        <form action="{{ noteLink.url }}" method="post">
+                                            <input type="hidden" name="categoryId" value="{{ noteLink.categoryId }}">
+                                            <div class="card {{ noteLink.class }} mb-3 form-vote text-white"
+                                                 style="background-color: {{ noteLink.color }}">
+                                                <div class="card-body">
+                                                    <i class="fa fa-star-half-alt"></i> {{ noteLink.title }}
+                                                </div>
+                                            </div>
+                                        </form>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key={{ google_map_key }}&callback=initMap&libraries=&v=weekly"
+            defer
+    ></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script>
+        let map, marker,
+            el = document.getElementById("map"),
+            submit = document.getElementById('btn-vote'),
+            position = JSON.parse(el.getAttribute('data-position')), recaptchaEl = document.getElementById('g-recaptcha');
+
+        position = {
+            lat: parseFloat(position.lat),
+            lng: parseFloat(position.lng),
+        }
+
+        function initMap() {
+            map = new google.maps.Map(el, {
+                center: position,
+                zoom: 12
+            });
+            marker = new google.maps.Marker({
+                position,
+                map: map
+            });
+        }
+
+        submit.addEventListener('click', function (e) {
+            if(!(grecaptcha && grecaptcha.getResponse().length)) {
+                e.preventDefault();
+                recaptchaEl.classList.add('is-invalid');
+                return 0;
+            }
+            else {
+                recaptchaEl.classList.remove('is-invalid')
+            }
+        })
+    </script>
+{% endblock %}

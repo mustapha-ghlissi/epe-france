@@ -1,0 +1,46 @@
+{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+<div class="mb-3">
+    <h4 class="badge badge-warning">
+        Infos générales
+    </h4>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.lastName) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.firstName) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.gender) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.birthDate) }}
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="mb-3">
+    <h4 class="badge badge-warning">
+        Détails profession
+    </h4>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.professionCode) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.professionLabel) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.mandateStartDate) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 offset-lg-4 form-group">
+        <button class="btn btn-primary btn-block">
+            <i class="fa fa-save"></i> {{ button_label|default('Enregistrer') }}
+        </button>
+    </div>
+</div>
+{{ form_rest(form) }}
+{{ form_end(form) }}

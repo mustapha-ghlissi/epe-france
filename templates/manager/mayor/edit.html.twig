@@ -1,0 +1,26 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Mise à jour maire
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Mise à jour maire</h5>
+                        <a href="{{ path('mayor_index') }}" class="btn btn-link btn-sm float-right">
+                            <i class="fa fa-arrow-left"></i> Retour
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        {{ include('manager/mayor/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

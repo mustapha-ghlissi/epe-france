@@ -1,0 +1,84 @@
+{% if categoryId != 6 %}
+    {% if categoryId == 4 or categoryId == 11 %}
+        <tr>
+            <th>Code INSEE département</th>
+            <td>{{ electedMember.departmentCode }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de Communes</th>
+            <td>{{ nbCommunes ? nbCommunes|number_format(0, ' ', ' ') : '-' }}</td>
+        </tr>
+        <tr>
+            <th>Département</th>
+            <td>{{ electedMember.departmentLabel }}</td>
+        </tr>
+        <tr>
+            <th>Région</th>
+            <td>{{ electedMember.areaLabel }}</td>
+        </tr>
+        <tr>
+            <th>Population de la Région {{ electedMember.populationYear }}</th>
+            <td>{{ electedMember.areaPopulation|number_format(0, ' ', ' ') }}(hab)</td> 
+        </tr>
+        <tr>
+            <th>Nombre de services publics dans la région</th>
+            <td>{{ electedMember.nbPublicService|format(0, ' ', ' ') }}</td>
+        </tr>
+    {% elseif categoryId == 1 or categoryId == 2 or categoryId == 9 %}
+        <tr>
+            <th>Code INSEE Commune</th>
+            <td>
+                {% if electedMember.codeInsee is defined %}
+                    {{ electedMember.codeInsee ?? '-' }}
+                {% elseif electedMember.communeCode is defined %}
+                    {{ electedMember.communeCode ?? '-' }}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Commune</th>
+            <td>{{ electedMember.communeLabel }}</td>
+        </tr>
+        <tr>
+            <th>Département</th>
+            <td>{{ electedMember.departmentLabel }}</td>
+        </tr>
+        <tr>
+            <th>Région</th>
+            <td>{{ electedMember.areaLabel }}</td>
+        </tr>
+        <tr>
+            <th>Population de la Commune {{ electedMember.populationYear }}</th>
+            <td>{{ electedMember.areaPopulation|number_format(0, ' ', ' ') }} (hab)</td>
+        </tr>
+        <tr>
+            <th>Nombre de services publics dans la Commune</th>
+            <td>{{ electedMember.nbPublicService|format(0, ' ', ' ') }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <th>Code INSEE département</th>
+            <td>{{ electedMember.departmentCode }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de Communes</th>
+            <td>{{ nbCommunes ? nbCommunes|number_format(0, ' ', ' ') : '-' }}</td>
+        </tr>
+        <tr>
+            <th>Département</th>
+            <td>{{ electedMember.departmentLabel }}</td>
+        </tr>
+        <tr>
+            <th>Région</th>
+            <td>{{ electedMember.areaLabel }}</td>
+        </tr>
+        <tr>
+            <th>Population du département {{ electedMember.populationYear }}</th>
+            <td>{{ electedMember.departmentPopulation|number_format(0, ' ', ' ') }} (hab)</td>
+        </tr>
+        <tr>
+            <th>Nombre de services publics dans le département</th>
+            <td>{{ electedMember.nbPublicService|format(0, ' ', ' ') }}</td>
+        </tr>
+    {% endif %}
+{% endif %}

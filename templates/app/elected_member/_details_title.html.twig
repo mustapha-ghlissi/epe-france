@@ -1,0 +1,13 @@
+{% if categoryId != 6 %}
+    <div class="col-12">
+        <h3 class="text-center bg-primary my-3 py-3 text-white">
+            {% if categoryId == 4 or categoryId == 11 %}
+                {{ electedMember.areaLabel }}
+            {% elseif categoryId == 1 or categoryId == 2 or categoryId == 9 %}
+                {{ electedMember.communeLabel }}
+            {% else %}
+                {{ electedMember.departmentLabel }}
+            {% endif %}
+        </h3>
+    </div>
+{% endif %}

@@ -1,0 +1,170 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Détails conseiller régional
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Détails conseiller régional</h5>
+                        <ul class="list-unstyled d-inline-flex align-items-center float-right">
+                            <li class="px-1">
+                                <a href="{{ path('regional_advisor_index') }}" class="btn btn-link">
+                                    <i class="fa fa-arrow-left"></i> Retour
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('manager_elected_member', {categoryId: 4, id: regional_advisor.id }) }}" class="btn btn-secondary">
+                                    <i class="fa fa-newspaper"></i> Ajouter extra data
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('regional_advisor_edit', {'id': regional_advisor.id}) }}" class="btn btn-success">
+                                    <i class="fa fa-edit"></i> Modifier
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('board_minute_index', {categoryId: 4, id: regional_advisor.id }) }}" class="btn btn-warning">
+                                    <i class="fa fa-file"></i> PVs de conseils
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                {{ include('manager/regional_advisor/_delete_form.html.twig', {button_label: 'Supprimer'}) }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Infos générales</th>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ regional_advisor.lastName|upper }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom</th>
+                                <td>{{ regional_advisor.firstName|capitalize }}</td>
+                            </tr>
+                            <tr>
+                                <th>Sexe</th>
+                                <td>{{ regional_advisor.gender|upper }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de naissance</th>
+                                <td>{{ regional_advisor.birthDate ? regional_advisor.birthDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">
+                                    Détails profession
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Code</th>
+                                <td>{{ regional_advisor.professionCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ regional_advisor.professionLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date début de mandate</th>
+                                <td>{{ regional_advisor.mandateStartDate ? regional_advisor.mandateStartDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé de la fonction</th>
+                                <td>{{ regional_advisor.functionLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date début de fonction</th>
+                                <td>{{ regional_advisor.functionStartDate ? regional_advisor.functionStartDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">
+                                    Détails géographique
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Latitude - Longitude</th>
+                                <td>{{ regional_advisor.latitude ~ ' - ' ~ regional_advisor.longitude }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails région</th>
+                            </tr>
+                            <tr>
+                                <th>Code</th>
+                                <td>{{ regional_advisor.regionCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libelle de région</th>
+                                <td>{{ regional_advisor.regionLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé de la région</th>
+                                <td>{{ regional_advisor.areaLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre des départements</th>
+                                <td>{{ regional_advisor.nbDepartments }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de service public</th>
+                                <td>{{ regional_advisor.nbPublicService }}</td>
+                            </tr>
+                            <tr>
+                                <th>Chef-Lieu</th>
+                                <td>{{ regional_advisor.areaCapital }}</td>
+                            </tr>
+                            <tr>
+                                <th>Superficie (km²)</th>
+                                <td>{{ regional_advisor.areaSurface }}</td>
+                            </tr>
+                            <tr>
+                                <th>Population {{ regional_advisor.populationYear }}</th>
+                                <td>{{ regional_advisor.areaPopulation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Densité (Hab./km²)</th>
+                                <td>{{ regional_advisor.areaDensity }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails département</th>
+                            </tr>
+                            <tr>
+                                <th>Code</th>
+                                <td>{{ regional_advisor.departmentCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ regional_advisor.departmentLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Chef-Lieu</th>
+                                <td>{{ regional_advisor.departmentCapital }}</td>
+                            </tr>
+                            <tr>
+                                <th>Population</th>
+                                <td>{{ regional_advisor.departmentPopulation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Superficie (km²)</th>
+                                <td>{{ regional_advisor.departmentSurface }}</td>
+                            </tr>
+                            <tr>
+                                <th>Densité (Hab.km²)</th>
+                                <td>{{ regional_advisor.departmentDensity }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

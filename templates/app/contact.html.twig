@@ -1,0 +1,120 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block content %}
+    <div class="content">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-light border">
+                    <li class="breadcrumb-item"><a href="{{ path('app') }}">Accueil</a></li>
+                    <li class="breadcrumb-item active" area-current="page">Contactez-nous</li>
+                </ol>
+            </nav>
+            <div class="row">
+                <div class="col-12">
+                    <p>L'application EPE-FRANCE.COM est un système d'évaluation des élus et de visualisation des chiffres clés sur les communes, départements, régions de France.</p>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class={'section-title'}>
+                                Contactez directement EPE-FRANCE.COM en utilisant ce formulaire ci-dessous 
+                            </h5><hr/>
+                            <div id="contact"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="d-flex flex-row align-items-center p-2 text-secondary">
+                                    <i class="fa fa-at"></i> <span class="ml-3">contact@epe-france.com</span>
+                                </li>
+                                <li class="d-flex flex-row align-items-center p-2 text-secondary">
+                                    <i class="fa fa-phone-alt"></i> <span class="ml-3">+ 33 (0) 6 12 64 51 95</span>
+                                </li>
+                                <li class="d-flex flex-row align-items-center p-2 text-secondary">
+                                    <i class="fa fa-map-marker-alt"></i> <span class="ml-3">
+                                        37 rue des Mathurins, 75008 Paris (France)
+                                    </span>
+                                </li>
+                            </ul>
+
+
+
+                            <h5 class="mt-5">
+                            Suivez-nous sur les réseaux sociaux
+                            </h5>
+                            <hr/>
+                            <ul class="list-unstyled d-flex flex-row flex-wrap align-items-center justify-content-between">
+                                <li class="flex-fill">
+                                    <a href="https://www.facebook.com/%C3%89valuation-de-la-politique-des-%C3%A9lus-httpswwwepe-francecom-109781250890268" class="d-flex flex-row align-items-center" target="_blank">
+                                        <i class="fab fa-facebook-square fa-2x"></i> <span class="ml-2">Facebook</span>
+                                    </a>
+                                </li>
+                                <li class="flex-fill">
+                                    <a href="https://www.instagram.com/epe2346/" class="d-flex flex-row align-items-center" target="_blank">
+                                        <i class="fab fa-instagram-square fa-2x"></i> <span class="ml-2">Instagram</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="list-unstyled d-flex flex-row flex-wrap align-items-center justify-content-between">
+                                <li class="flex-fill">
+                                    <a href="https://twitter.com/eusepfrance" class="d-flex flex-row align-items-center" target="_blank">
+                                        <i class="fab fa-twitter-square fa-2x"></i> <span class="ml-2">Twitter</span>
+                                    </a>
+                                </li>
+                                <li class="flex-fill">
+                                    <a href="https://www.linkedin.com/company/70870248/admin/" class="d-flex flex-row align-items-center" target="_blank">
+                                        <i class="fab fa-linkedin fa-2x"></i> <span class="ml-2">LinkedIn</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>
+                                Rencontrez-nous
+                            </h5><hr/>
+                            <p>
+                                Nous sommes situés au 37 rue des Mathurins, 75008 PARIS
+                            </p>
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('contact') }}
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key={{ google_map_key }}&callback=initMap&libraries=&v=weekly"
+            defer
+    ></script>
+
+    <script>
+        let map, position = {
+            lat: 48.872947300000035, lng: 2.324626399999987
+        };
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: position,
+                zoom: 17
+            });
+
+             marker = new google.maps.Marker({
+                position,
+                map: map
+            });
+        }
+
+    </script>
+{% endblock %}

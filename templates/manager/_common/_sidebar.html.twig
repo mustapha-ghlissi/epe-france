@@ -1,0 +1,96 @@
+{% set path = app.request.pathInfo %}
+{% set route = app.request.get('_route') %}
+<!-- Sidebar -->
+<div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading text-center">
+        <img src="{{ asset('build/images/logo_epe.86109c77.png') }}" style="width: 10rem" class="img-fluid m-auto" alt="">
+    </div>
+
+    <div class="list-group list-group-flush">
+        <a href="{{ path('manager') }}"
+           class="list-group-item list-group-item-action {% if route == 'manager' %}active{% endif %}">
+            <i class="fa fa-home"></i> Tableau de bord
+        </a>
+        <a href="{{ path('municipal_advisor_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/municipal/advisor' or path == '/manager/elected/member/1/spreadsheet/import' %}active{% endif %}">
+            <i class="fa fa-users"></i> Cons. municipaux
+        </a>
+        <a href="{{ path('community_advisor_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/community/advisor' or path == '/manager/elected/member/2/spreadsheet/import' %}active{% endif %}">
+            <i class="fa fa-users"></i> Cons. communautaires
+        </a>
+        <a href="{{ path('departmental_advisor_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/departmental/advisor' or path == '/manager/elected/member/3/spreadsheet/import' %}active{% endif %}">
+            <i class="fa fa-users"></i> Cons. départementaux
+        </a>
+        <a href="{{ path('regional_advisor_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/regional/advisor' or path == '/manager/elected/member/4/spreadsheet/import' %}active{% endif %}">
+            <i class="fa fa-users"></i> Cons. régionaux
+        </a>
+        <a href="{{ path('corsican_advisor_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/corsican/advisor' or path == '/manager/elected/member/5/spreadsheet/import' %}active{% endif %}">
+            <i class="fa fa-users"></i> Cons. corse
+        </a>
+        <a href="{{ path('euro_deputy_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/euro/deputy' or path == '/manager/elected/member/6/spreadsheet/import' %}active{% endif %}">
+            <i class="fa fa-users"></i> Députés. européens
+        </a>
+         <a href="{{ path('senator_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/senator' or path == '/manager/elected/member/7/spreadsheet/import' %}active{% endif %}">
+            <i class="fa fa-users"></i> Sénateurs
+        </a>
+        <a href="{{ path('deputy_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/deputy' or path == '/manager/elected/member/8/spreadsheet/import' %}active{% endif %}">
+            <i class="fa fa-users"></i> Députés
+        </a>
+        <a href="{{ path('mayor_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/mayor' or path == '/manager/elected/member/9/spreadsheet/import' %}active{% endif %}">
+            <i class="fa fa-users"></i> Maires
+        </a>
+
+        <a href="{{ path('board_minute_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/board/minute' %}active{% endif %}">
+            <i class="fa fa-users"></i> PVs de conseils
+        </a>
+
+
+        <a href="{{ path('deputy_note_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/note/deputy' %}active{% endif %}">
+            <i class="fa fa-star-half-alt"></i> Notes des députés
+        </a>
+
+        <a href="{{ path('euro_deputy_note_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/note/euro/deputy' %}active{% endif %}">
+            <i class="fa fa-star-half-alt"></i> Notes des dép. euro.
+        </a>
+
+        <a href="{{ path('m_p_d_p_r_note_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/note/m/p/d/p/r' %}active{% endif %}">
+            <i class="fa fa-star-half-alt"></i> Notes des M;PD;PR
+        </a>
+
+        <a href="{{ path('other_note_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/note/other' %}active{% endif %}">
+            <i class="fa fa-star-half-alt"></i> Autres notes
+        </a>
+
+        <a href="{{ path('tax_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/tax' %}active{% endif %}">
+            <i class="fa fa-star-half-alt"></i> Impôts
+        </a>
+
+        <a href="{{ path('accounting_index') }}"
+           class="list-group-item list-group-item-action {% if path starts with '/manager/accounting' %}active{% endif %}">
+            <i class="fa fa-star-half-alt"></i> Comptabilité
+        </a>
+
+        <a href="{{ path('manager_settings') }}"
+           class="list-group-item list-group-item-action {% if route == 'manager_settings' %}active{% endif %}">
+            <i class="fa fa-cog"></i> Paramètres
+        </a>
+        <a href="{{ path('manager_logout') }}" class="list-group-item list-group-item-action bg-light">
+            <i class="fa fa-sign-out-alt"></i> Déconnexion
+        </a>
+    </div>
+</div>
+<!-- /#sidebar-wrapper -->

@@ -1,0 +1,119 @@
+{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+<div class="mb-3">
+    <h4 class="badge badge-warning">
+        Infos générales
+    </h4>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.year) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.nbTaxHomes) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.taxRevenue) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.totalAmount) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.nbImposableTaxHomes) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.imposableTaxRevenue) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.salaryNbTaxHomes) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.salaryTaxRevenue) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.pensionNbTaxHomes) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.pensionTaxRevenue) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.source) }}
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="mb-3">
+    <h4 class="badge badge-warning">
+        Détails commune
+    </h4>
+    <div class="row">
+
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.codeInsee) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.communeLabel) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.communeLastName) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.communeFirstName) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.communeBirthDate) }}
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="mb-3">
+    <h4 class="badge badge-warning">
+        Détails département
+    </h4>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.departmentCode) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.departmentLabel) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.depLastName) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.depFirstName) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.depBirthDate) }}
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="mb-3">
+    <h4 class="badge badge-warning">
+        Détails région
+    </h4>
+    <div class="row">
+
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.areaLabel) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.areaLastName) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.areaFirstName) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.areaBirthDate) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4 offset-lg-4 form-group">
+        <button class="btn btn-primary btn-block">
+            <i class="fa fa-save"></i> {{ button_label|default('Enregistrer') }}
+        </button>
+    </div>
+</div>
+{{ form_rest(form) }}
+{{ form_end(form) }}

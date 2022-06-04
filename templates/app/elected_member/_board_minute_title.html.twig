@@ -1,0 +1,26 @@
+{% if categoryId == 1 %}
+    {% set boardMinuteTitle = 'Procès-verbaux des conseils municipaux' %}
+{% elseif categoryId == 2 %}
+    {% set boardMinuteTitle = 'Procès-verbaux des conseils communautaires' %}
+{% elseif categoryId == 3 %}
+    {% set boardMinuteTitle = 'Procès-verbaux ou/et rapports départementaux' %}
+{% elseif categoryId == 4 %}
+    {% set boardMinuteTitle = 'Procès-verbaux des conseils régionaux et/ou des assemblées permanentes' %}
+{% elseif categoryId == 5 %}
+    {% set boardMinuteTitle = 'Procès-verbaux ou/et rapports des assemblées des conseils ou assemblées Corse' %}
+{% elseif categoryId == 6 %}
+    {% set boardMinuteTitle = 'Rapports législatifs / comptes rendus des  débats / Questions écrites et orales lors des séances' %}
+{% elseif categoryId == 7 %}
+    {% set boardMinuteTitle = 'Comptes rendus des débats / Rapports et documents de travail' %}
+{% elseif categoryId == 8 %}
+    {% set boardMinuteTitle = 'Rapports législatifs / comptes rendus des  débats / Questions écrites et orales lors des séances' %}
+{% elseif categoryId == 9 %}
+    {% set boardMinuteTitle = 'Procès-verbaux des conseils municipaux ' %}
+{% elseif categoryId == 10 %}
+    {% set boardMinuteTitle = 'Procès-verbaux ou/et rapports des conseils départementaux' %}
+{% else %}
+    {% set boardMinuteTitle = 'Procès-verbaux des conseils régionaux et/ou des assemblées permanentes' %}
+{% endif %}
+{{ boardMinuteTitle|capitalize }}
+
+

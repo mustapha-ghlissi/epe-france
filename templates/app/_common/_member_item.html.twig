@@ -1,0 +1,386 @@
+{% if categoryId == 1 or categoryId == 9 %}
+    <div class="card mb-2 form-vote d-none d-lg-block">
+        <div class="card-body d-flex flex-row align-items-center">
+            <img class="elected-avatar rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+
+            
+            <div class="flex-fill ml-3"><h4 class="text-center font-weight-bold">
+                    {{ member.firstName|title ~ ' ' ~ member.lastName|upper }}
+                </h4>
+                <hr/>
+                <ul class="list-unstyled">
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Commune :</span> {{ member.communeLabel|upper }}
+                    </li>
+                
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Département :</span> {{ member.departmentLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Région :</span> {{ member.areaLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Population de la Commune:</span> {{ member.areaPopulation|number_format(0, ' ', ' ') }} (hab)
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Densité de la Commune :</span> {{ member.areaDensity|number_format(0, ' ', ' ') ~ '/km²' }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-2 form-vote d-block d-lg-none">
+        <div class="card-body d-flex flex-column justify-content-center">
+            <img class="elected-avatar mx-auto rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+            <div class="mt-3">
+                <h4 class="text-center font-weight-bold my-3">
+                    {{ member.firstName|title ~ ' ' ~ member.lastName|upper }}
+                </h4>
+                <hr/>
+                <ul class="list-unstyled">
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Commune :</span> {{ member.communeLabel|upper }}
+                    </li>
+
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Département :</span> {{ member.departmentLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Région :</span> {{ member.areaLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Population de la Commune :</span> {{ member.areaPopulation|number_format(0, ' ', ' ') }} (hab)
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Densité de la Commune :</span> {{ member.areaDensity|number_format(0, ' ', ' ') ~ '/km²' }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% elseif categoryId == 2 %}
+    <div class="card mb-2 form-vote d-none d-lg-block">
+        <div class="card-body d-flex flex-row align-items-center">
+            <img class="elected-avatar rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+
+            
+            <div class="flex-fill ml-3"><h4 class="text-center font-weight-bold">
+                    {{ member.firstName|title ~ ' ' ~ member.lastName|upper }}
+                </h4>
+                <hr/>
+                <ul class="list-unstyled">
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Commune rattachée :</span> {{ member.communeLabel|upper }}
+                    </li>
+                
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Département :</span> {{ member.departmentLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Région :</span> {{ member.areaLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Population de la Commune rattachée :</span> {{ member.areaPopulation|number_format(0, ' ', ' ') }} (hab)
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Densité de la Commune rattachée :</span> {{ member.areaDensity|number_format(0, ' ', ' ') ~ '/km²' }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-2 form-vote d-block d-lg-none">
+        <div class="card-body d-flex flex-column justify-content-center">
+            <img class="elected-avatar mx-auto rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+            <div class="mt-3">
+                <h4 class="text-center font-weight-bold my-3">
+                    {{ member.firstName|title ~ ' ' ~ member.lastName|upper }}
+                </h4>
+                <hr/>
+                <ul class="list-unstyled">
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Commune rattachée :</span> {{ member.communeLabel|upper }}
+                    </li>
+
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Département :</span> {{ member.departmentLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Région :</span> {{ member.areaLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Population de la Commune rattachée :</span> {{ member.areaPopulation|number_format(0, ' ', ' ') }} (hab)
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Densité de la Commune rattachée :</span> {{ member.areaDensity|number_format(0, ' ', ' ') ~ '/km²' }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% elseif categoryId == 3 or categoryId == 4 or categoryId == 5 %}
+    <div class="card mb-2 form-vote d-none d-lg-block">
+        <div class="card-body d-flex flex-row align-items-center">
+            <img class="elected-avatar rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+            <div class="flex-fill ml-3">
+                <h4 class="text-center font-weight-bold">
+                     {{ member.firstName|title ~ ' ' ~ member.lastName|upper }}
+                </h4>
+                <hr/>
+                <ul class="list-unstyled">
+                   <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Département :</span> {{ member.departmentLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Région :</span> {{ member.areaLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Date de naissance :</span> {{ member.birthDate|date('d/m/Y') }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Profession :</span> {{ member.professionLabel|title }}
+                    </li>
+                  
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-2 form-vote d-block d-lg-none">
+        <div class="card-body d-flex flex-column justify-content-center">
+            <img class="elected-avatar mx-auto rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+            <div class="mt-3">
+                <h4 class="text-center font-weight-bold my-3">
+                    {{ member.firstName|title ~ ' ' ~ member.lastName|upper }}
+                </h4>
+                <hr/>
+                <ul class="list-unstyled">
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Département :</span> {{ member.departmentLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Région :</span> {{ member.areaLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Date de naissance :</span> {{ member.birthDate|date('d/m/Y') }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Profession :</span> {{ member.professionLabel|title }}
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+{% elseif categoryId == 6 %}
+    <div class="card mb-2 form-vote d-none d-lg-block">
+        <div class="card-body d-flex flex-row align-items-center">
+            <img class="elected-avatar rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+            <div class="flex-fill ml-3">
+                <ul class="list-unstyled flex-fill ml-3">
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Nom :</span> {{ member.lastName|upper }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Prénom :</span> {{ member.firstName|title }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Age :</span> {{ 'now'|date('Y') - member.birthDate|date('Y') }} ans
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-2 form-vote d-block d-lg-none">
+        <div class="card-body d-flex flex-column justify-content-center">
+            <img class="elected-avatar mx-auto rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+            <div class="mt-3">
+                <ul class="list-unstyled">
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Nom :</span> {{ member.lastName|upper }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Prénom :</span> {{ member.firstName|title }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Age :</span> {{ 'now'|date('Y') - member.birthDate|date('Y') }} ans
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% elseif categoryId == 7 or categoryId == 8 %}
+    <div class="card mb-2 form-vote d-none d-lg-block">
+        <div class="card-body d-flex flex-row align-items-center">
+            <img class="elected-avatar rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+            <div class="flex-fill ml-3">
+                <h4 class="text-center font-weight-bold">
+                     {{ member.firstName|title ~ ' ' ~ member.lastName|upper }}
+                </h4><hr/>
+                <ul class="list-unstyled flex-fill ml-3">
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Département :</span> {{ member.departmentLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Région :</span> {{ member.areaLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Age :</span> {{ 'now'|date('Y') - member.birthDate|date('Y') }} ans
+                    </li>
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-2 form-vote d-block d-lg-none">
+        <div class="card-body d-flex flex-column justify-content-center">
+            <img class="elected-avatar mx-auto rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+            <div class="mt-3">
+                <h4 class="text-center font-weight-bold my-3">
+                    {{ member.firstName|title ~ ' ' ~ member.lastName|upper }}
+                </h4><hr/>
+                <ul class="list-unstyled flex-fill ml-3">
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Département :</span> {{ member.departmentLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Région :</span> {{ member.areaLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Age :</span> {{ 'now'|date('Y') - member.birthDate|date('Y') }} ans
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+{% elseif categoryId == 10 %}
+    <div class="card mb-2 form-vote d-none d-lg-block">
+        <div class="card-body d-flex flex-row align-items-center">
+            <img class="elected-avatar rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+            <div class="flex-fill ml-3">
+                <h4 class="text-center font-weight-bold">
+                     {{ member.firstName|title ~ ' ' ~ member.lastName|upper }}
+                </h4>
+                <hr/>
+                <ul class="list-unstyled">
+                    
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Département :</span> {{ member.departmentLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Région :</span> {{ member.areaLabel|capitalize }}
+                    </li>
+                
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Population du département :</span> {{ member.departmentPopulation|number_format(0, ' ', ' ') }} (hab)
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Densité du département:</span> {{ member.departmentDensity|number_format(0, ' ', ' ') ~ '/km²' }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-2 form-vote d-block d-lg-none">
+        <div class="card-body d-flex flex-column justify-content-center">
+            <img class="elected-avatar mx-auto rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+            <div class="mt-3">
+                <h4 class="text-center font-weight-bold my-3">
+                    {{ member.firstName|title ~ ' ' ~ member.lastName|upper }}
+                </h4>
+                <hr/>
+                <ul class="list-unstyled">
+
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Département :</span> {{ member.departmentLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Région :</span> {{ member.areaLabel|capitalize }}
+                    </li>
+
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Population du département :</span> {{ member.departmentPopulation|number_format(0, ' ', ' ') }} (hab)
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Densité du départment :</span> {{ member.departmentDensity|number_format(0, ' ', ' ') ~ '/km²' }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="card mb-2 form-vote d-none d-lg-block">
+        <div class="card-body d-flex flex-row align-items-center">
+            <img class="elected-avatar rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+            <div class="flex-fill ml-3">
+                <h4 class="text-center font-weight-bold">
+                   {{ member.firstName|title ~ ' ' ~ member.lastName|upper }}
+                </h4>
+                <hr/>
+                <ul class="list-unstyled">
+                    
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Département :</span> {{ member.departmentLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Région :</span> {{ member.areaLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Nombre de départements :</span> {{ member.nbDepartments }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Population de la Région :</span> {{ member.areaPopulation|number_format(0, ' ', ' ') }} (hab)
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Superficie de la Région :</span> {{ member.areaSurface|number_format(0, ' ', ' ') ~ ' km²' }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-2 form-vote d-block d-lg-none">
+        <div class="card-body d-flex flex-column justify-content-center">
+            <img class="elected-avatar mx-auto rounded-circle"
+                 src="{{ asset('build/images/member-logo.bcd1c003.jpg') }}" alt="">
+            <div class="mt-3">
+                <h4 class="text-center font-weight-bold my-3">
+                    {{ member.firstName|title ~ ' ' ~ member.lastName|upper }}
+                </h4>
+                <hr/>
+                <ul class="list-unstyled">
+
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Département :</span> {{ member.departmentLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Région :</span> {{ member.areaLabel|capitalize }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Nombre de départements :</span> {{ member.nbDepartments }}
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Population de la Région :</span> {{ member.areaPopulation|number_format(0, ' ', ' ') }} (hab)
+                    </li>
+                    <li class="d-flex flex-row align-items-center justify-content-between">
+                        <span>Superficie de la Région :</span> {{ member.areaSurface|number_format(0, ' ', ' ') ~ ' km²' }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,26 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Nouveau conseiller régional
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="card my-3">
+                <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                    <h5 class="card-title">Nouveau conseiller régional</h5>
+                    <a href="{{ path('regional_advisor_index') }}" class="btn btn-link btn-sm float-right">
+                        <i class="fa fa-arrow-left"></i> Retour
+                    </a>
+                </div>
+                <div class="card-body">
+                    {% include 'manager/_common/_flash_message.html.twig' %}
+                    {{ include('manager/regional_advisor/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

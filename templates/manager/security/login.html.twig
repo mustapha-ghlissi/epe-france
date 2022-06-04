@@ -1,0 +1,57 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    Connectez vous
+{% endblock %}
+
+{% block body %}
+ <div class="vh-100 d-flex align-items-lg-center py-5">
+     <div class="container-fluid">
+         <div class="row">
+             <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+                 <div class="card">
+                     <div class="card-body">
+                         <div class="mb-3 d-flex flex-row justify-content-between align-items-center">
+                             <img class="img-fluid" style="width: 10rem" src="{{ asset('build/images/logo_epe.86109c77.png') }}" alt="">
+                             <h3 class="text-muted">
+                                 Espace Administrateur
+                             </h3>
+                         </div>
+                         <hr/>
+                         <form method="post">
+                             {% if error %}
+                                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                             {% endif %}
+                             {% include 'app/_common/_flash_message.html.twig' %}
+
+
+                             <div class="form-group">
+                                 <label for="inputEmail">Adresse email</label>
+                                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+                             </div>
+                             <div class="form-group">
+                                 <label for="inputPassword">Mot de passe</label>
+                                 <input type="password" name="password" id="inputPassword" class="form-control" required>
+                             </div>
+                             <input type="hidden" name="_csrf_token"
+                                    value="{{ csrf_token('authenticate') }}"
+                             >
+                             <div class="form-group mt-5">
+                                 <button class="btn btn-block btn-primary" type="submit">
+                                     Se connecter
+                                 </button>
+                             </div>
+                         </form>
+
+                         <div class="form-group text-center mt-5">
+                             <a href="{{ path('manager_password_forgot') }}" class="">
+                                 Mot de passe oublié ?
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+{% endblock %}

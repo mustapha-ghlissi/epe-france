@@ -1,0 +1,154 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Paramètres
+{% endblock %}
+
+{% block content %}
+    {% set extraData = electedMember.extraData %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Widgets de l'élu {{ electedMember.firstName|capitalize ~ ' ' ~ electedMember.lastName|upper }}</h5>
+                        {% if extraData %}
+                            {% include 'manager/elected_member/_form_delete.html.twig' with {button_label: 'Supprimer'} %}
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <form action="{{ path('manager_elected_member', {categoryId: categoryId, id: electedMember.id}) }}" method="post">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    {% if extraData %}
+                                        <div class="elected-member-videos">
+                                            {% for link in extraData.videos.links %}
+                                                <div class="elected-member-video">
+                                                    <div class="form-group">
+                                                        <label for="videoLink{{ loop.index0 }}">
+                                                            Video
+                                                        </label>
+                                                        <textarea name="videoLink[]" id="videoLink{{ loop.index0 }}" cols="30" rows="9"
+                                                                  class="form-control" placeholder="Coller ici le code du video" required>{{ link }}</textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="description">
+                                                            Description
+                                                        </label>
+                                                        <textarea name="videoDescription[]" id="description" cols="30" rows="5"
+                                                                  class="form-control" placeholder="">{{ extraData.videos.descriptions[loop.index0] }}</textarea>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="form-group text-right">
+                                            <a href="#" class="btn btn-success" id="btnAddVideo" role="button">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </a>
+                                            {% if extraData.videos.links|length > 1 %}
+                                                <a href="#" class="btn btn-danger" id="btnRemoveVideo" role="button">
+                                                    <i class="fa fa-minus-circle"></i>
+                                                </a>
+                                                {% else %}
+                                                    <a href="#" class="btn btn-danger d-none" id="btnRemoveVideo" role="button">
+                                                        <i class="fa fa-minus-circle"></i>
+                                                    </a>
+                                            {% endif %}
+                                        </div>
+                                    {% else %}
+                                    <div class="elected-member-videos">
+                                        <div class="elected-member-video">
+                                            <div class="form-group">
+                                                <label for="videoLink0">
+                                                    Video
+                                                </label>
+                                                <textarea name="videoLink[]" id="videoLink0" cols="30" rows="9"
+                                                          class="form-control" placeholder="Coller ici le code du video" required></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="videoDescription0">
+                                                    Description
+                                                </label>
+                                                <textarea name="videoDescription[]" id="videoDescription0" cols="30" rows="5"
+                                                          class="form-control" placeholder=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="form-group text-right">
+                                            <a href="#" class="btn btn-success" id="btnAddVideo" role="button">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-danger d-none" id="btnRemoveVideo" role="button">
+                                                <i class="fa fa-minus-circle"></i>
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-6">
+                                    {% if extraData %}
+                                        <div class="elected-member-timelines">
+                                            {% for timeline in extraData.socialTimelines %}
+                                                <div class="elected-member-timeline" data-index="1">
+                                                    <div class="form-group">
+                                                        <label for="timelineSourceCode{{ loop.index0 }}">
+                                                            Code source de fil d'actualité
+                                                        </label>
+                                                        <textarea name="timelineSourceCode[]" id="timelineSourceCode{{ loop.index0 }}" cols="30" rows="9"
+                                                                  class="form-control" placeholder="Coller le code du widget ici">{{ timeline }}</textarea>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="form-group text-right">
+                                            <a href="#" class="btn btn-success" id="btnAddTimeline">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </a>
+                                            {% if extraData.socialTimelines|length > 1 %}
+                                            <a href="#" class="btn btn-danger" id="btnRemoveTimeline">
+                                                <i class="fa fa-minus-circle"></i>
+                                            </a>
+                                            {% else %}
+                                                <a href="#" class="btn btn-danger d-none" id="btnRemoveTimeline">
+                                                    <i class="fa fa-minus-circle"></i>
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                    {% else %}
+                                        <div class="elected-member-timelines">
+                                            <div class="elected-member-timeline" data-index="1">
+                                                <div class="form-group">
+                                                    <label for="timelineSourceCode0">
+                                                        Code source de fil d'actualité
+                                                    </label>
+                                                    <textarea name="timelineSourceCode[]" id="timelineSourceCode0" cols="30" rows="9"
+                                                              class="form-control" placeholder="Coller le code du widget ici"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group text-right">
+                                            <a href="#" class="btn btn-success" id="btnAddTimeline">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-danger d-none" id="btnRemoveTimeline">
+                                                <i class="fa fa-minus-circle"></i>
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-block btn-primary">
+                                            Enregistrer
+                                        </button>
+                                    </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

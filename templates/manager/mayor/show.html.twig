@@ -1,0 +1,174 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Détails maire
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Détails maire</h5>
+                        <ul class="list-unstyled d-inline-flex align-items-center float-right">
+
+                            <li class="px-1">
+                                <a href="{{ path('mayor_index') }}" class="btn btn-link">
+                                    <i class="fa fa-arrow-left"></i> Retour
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('manager_elected_member', {categoryId: 9, id: mayor.id }) }}" class="btn btn-secondary">
+                                    <i class="fa fa-newspaper"></i> Ajouter extra data
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('mayor_edit', {'id': mayor.id}) }}" class="btn btn-success">
+                                    <i class="fa fa-edit"></i> Modifier
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('board_minute_index', {categoryId: 9, id: mayor.id }) }}" class="btn btn-warning">
+                                    <i class="fa fa-file"></i> PVs de conseils
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                {{ include('manager/mayor/_delete_form.html.twig', {button_label: 'Supprimer'}) }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Infos générales</th>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ mayor.lastName|upper }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom</th>
+                                <td>{{ mayor.firstName|capitalize }}</td>
+                            </tr>
+                            <tr>
+                                <th>Sexe</th>
+                                <td>{{ mayor.gender }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de naissance</th>
+                                <td>{{ mayor.birthDate ? mayor.birthDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails profession</th>
+                            </tr>
+                            <tr>
+                                <th>Code</th>
+                                <td>{{ mayor.professionCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ mayor.professionLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date début de mandate</th>
+                                <td>{{ mayor.mandateStartDate ? mayor.mandateStartDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date début de fonction</th>
+                                <td>{{ mayor.functionStartDate ? mayor.functionStartDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">
+                                    Détails géographique
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Latitude - Longitude</th>
+                                <td>{{ mayor.latitude ~ ' - ' ~ mayor.longitude }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails département</th>
+                            </tr>
+                            <tr>
+                                <th>Code</th>
+                                <td>{{ mayor.departmentCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ mayor.departmentLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Chef-Lieu</th>
+                                <td>{{ mayor.departmentCapital }}</td>
+                            </tr>
+                            <tr>
+                                <th>Population</th>
+                                <td>{{ mayor.departmentPopulation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Superficie (km²)</th>
+                                <td>{{ mayor.departmentSurface }}</td>
+                            </tr>
+                            <tr>
+                                <th>Densité (Hab./km²)</th>
+                                <td>{{ mayor.departmentDensity }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails région</th>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ mayor.areaLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre des départements</th>
+                                <td>{{ mayor.nbDepartments }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de service public</th>
+                                <td>{{ mayor.nbPublicService }}</td>
+                            </tr>
+                            <tr>
+                                <th>Chef-Lieu</th>
+                                <td>{{ mayor.areaCapital }}</td>
+                            </tr>
+                            <tr>
+                                <th>Superficie (km²)</th>
+                                <td>{{ mayor.areaSurface }}</td>
+                            </tr>
+                            <tr>
+                                <th>Population {{ mayor.populationYear }}</th>
+                                <td>{{ mayor.areaPopulation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Densité (Hab./km²)</th>
+                                <td>{{ mayor.areaDensity }}</td>
+                            </tr>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Détails commune</th>
+                            </tr>
+                            <tr>
+                                <th>Code INSEE</th>
+                                <td>{{ mayor.codeInsee }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé</th>
+                                <td>{{ mayor.communeLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Code postal</th>
+                                <td>{{ mayor.zipCode }}</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

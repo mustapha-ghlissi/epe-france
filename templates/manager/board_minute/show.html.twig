@@ -1,0 +1,110 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Détails PV conseil
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Détails PV conseil</h5>
+                        <ul class="list-unstyled d-inline-flex align-items-center float-right">
+                            <li class="px-1">
+                                <a href="{{ path('board_minute_index') }}" class="btn btn-link">
+                                    <i class="fa fa-arrow-left"></i> Retour
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                {{ include('manager/board_minute/_delete_form.html.twig', {button_label: 'Supprimer'}) }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Infos générales</th>
+                            </tr>
+                            <tr>
+                                <th>Titre</th>
+                                <td>{{ boardMinute.title|capitalize }}</td>
+                            </tr>
+                            {% if boardMinute.commune %}
+                                <tr>
+                                    <th>Commune</th>
+                                    <td>{{ boardMinute.commune.codeInsee ~ ' - ' ~ boardMinute.commune.name|title }}</td>
+                                </tr>
+                            {% elseif boardMinute.department %}
+                                <tr>
+                                    <th>Département</th>
+                                    <td>{{ boardMinute.department.name|title }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <th>Région</th>
+                                    <td>{{ boardMinute.area.name|title }}</td>
+                                </tr>
+                            {% endif %}
+                            <tr>
+                                <th>Mois/Année</th>
+                                <td>{{ boardMinute.month|capitalize ~ ' ' ~ boardMinute.year }}</td>
+                            </tr>
+
+                            <tr class="bg-warning text-white">
+                                <th colspan="2" align="center">Liste des documents</th>
+                            </tr>
+
+                            {% if boardMinute.fileNames|length == 1 %}
+                                {% for fileName in boardMinute.fileNames %}
+                                    <tr>
+                                        <th>{{ fileName }}</th>
+                                        <td>
+                                            <ul class="list-unstyled d-inline-flex flex-row flex-wrap">
+                                                <li class="p-1">
+                                                    <a href="{{ asset('uploads/boards_minutes/' ~ fileName ) }}" target="_blank" class="btn btn-primary">
+                                                        Télécharger <i class="fa fa-download"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                {% for fileName in boardMinute.fileNames %}
+                                    <tr>
+                                        <th>{{ fileName }}</th>
+                                        <td>
+                                            <ul class="list-unstyled d-inline-flex flex-row flex-wrap">
+                                                <li class="p-1">
+                                                    <a href="{{ asset('uploads/boards_minutes/' ~ fileName ) }}" target="_blank" class="btn btn-primary">
+                                                        Télécharger <i class="fa fa-download"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="p-1">
+                                                    <form method="post" action="{{ path('board_minute_file_delete', {'id': boardMinute.id, fileName: fileName}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ boardMinute.id) }}">
+                                                        <button class="btn btn-danger">
+                                                            Supprimer <i class="fa fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Détails taxe
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Détails conseiller communautaire</h5>
+                        <ul class="list-unstyled d-inline-flex align-items-center float-right">
+                            <li class="px-1">
+                                <a href="{{ path('tax_index') }}" class="btn btn-link">
+                                    <i class="fa fa-arrow-left"></i> Retour
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="{{ path('tax_edit', {'id': tax.id}) }}"
+                                   class="btn btn-success">
+                                    <i class="fa fa-edit"></i> Modifier
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                {{ include('manager/tax/_delete_form.html.twig', {button_label: 'Supprimer'}) }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ tax.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Année</th>
+                                <td>{{ tax.year }}</td>
+                            </tr>
+                            <tr>
+                                <th>Code INSEE</th>
+                                <td>{{ tax.codeInsee }}</td>
+                            </tr>
+                            <tr class="bg-warning">
+                                <th colspan="2">
+                                    Infos commune
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Nom de la commune</th>
+                                <td>{{ tax.communeLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nom de l'élu</th>
+                                <td>{{ tax.communeLastName|title }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom de l'élu</th>
+                                <td>{{ tax.communeFirstName|upper }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de naissance</th>
+                                <td>{{ tax.communeBirthDate ? tax.communeBirthDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr class="bg-warning">
+                                <th colspan="2">
+                                    Infos département
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Code</th>
+                                <td>{{ tax.departmentCode }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ tax.departmentLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nom de l'élu</th>
+                                <td>{{ tax.depLastName|title }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom de l'élu</th>
+                                <td>{{ tax.depFirstName|upper }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de naissance</th>
+                                <td>{{ tax.depBirthDate ? tax.depBirthDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr class="bg-warning">
+                                <th colspan="2">
+                                    Infos région
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ tax.areaLabel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nom de l'élu</th>
+                                <td>{{ tax.areaLastName|upper }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom de l'élu</th>
+                                <td>{{ tax.areaFirstName|title }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de naissance</th>
+                                <td>{{ tax.areaBirthDate ? tax.areaBirthDate|date('d/m/Y') : '' }}</td>
+                            </tr>
+                            <tr class="bg-warning">
+                                <th colspan="2">
+                                    Infos générales
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Nombre des foyers fiscaux</th>
+                                <td>{{ tax.nbTaxHomes }}</td>
+                            </tr>
+                            <tr>
+                                <th>Revenu fixal de référence des foyers fiscaux</th>
+                                <td>{{ tax.taxRevenue }}</td>
+                            </tr>
+                            <tr>
+                                <th>Montant impôt net total</th>
+                                <td>{{ tax.totalAmount }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre des foyers fiscaux imposable</th>
+                                <td>{{ tax.nbImposableTaxHomes }}</td>
+                            </tr>
+                            <tr>
+                                <th>Revenu fixal de référence des foyers fiscaux imposée</th>
+                                <td>{{ tax.imposableTaxRevenue }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre des foyers concernés par traitements et salaires</th>
+                                <td>{{ tax.salaryNbTaxHomes }}</td>
+                            </tr>
+                            <tr>
+                                <th>Montant de foyers concernés par traitement et salaires</th>
+                                <td>{{ tax.salaryTaxRevenue }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre des foyers concernés retraites et pensions</th>
+                                <td>{{ tax.pensionNbTaxHomes }}</td>
+                            </tr>
+                            <tr>
+                                <th>Montant de foyers concernés retraites et pensions</th>
+                                <td>{{ tax.pensionTaxRevenue }}</td>
+                            </tr>
+                            <tr>
+                                <th>Source</th>
+                                <td>{{ tax.source }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block body %}
+    <div id="homepage"></div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('home') }}
+{% endblock %}

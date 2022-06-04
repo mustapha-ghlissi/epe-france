@@ -1,0 +1,125 @@
+{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+<div class="mb-3">
+    <h4 class="badge badge-warning">
+        Infos générales
+    </h4>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.lastName) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.firstName) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.gender) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.birthDate) }}
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="mb-3">
+    <h4 class="badge badge-warning">
+        Détails profession
+    </h4>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.professionCode) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.professionLabel) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.mandateStartDate) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.functionLabel) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.functionStartDate) }}
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="mb-3">
+    <h4 class="badge badge-warning">
+        Détails Géographique
+    </h4>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.latitude) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.longitude) }}
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="mb-3">
+    <h4 class="badge badge-warning">
+        Détails département
+    </h4>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.departmentCode) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.departmentLabel) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.departmentCapital) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.departmentPopulation) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.departmentSurface) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.departmentDensity) }}
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="mb-3">
+    <h4 class="badge badge-warning">
+        Détails région
+    </h4>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.areaLabel) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.nbDepartments) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.areaCapital) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.areaSurface) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.areaPopulation) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.populationYear) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.areaDensity) }}
+        </div>
+        <div class="col-lg-4 col-md-6">
+            {{ form_row(form.nbPublicService) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 offset-lg-4 form-group">
+        <button class="btn btn-primary btn-block">
+            <i class="fa fa-save"></i> {{ button_label|default('Enregistrer') }}
+        </button>
+    </div>
+</div>
+{{ form_rest(form) }}
+{{ form_end(form) }}
+

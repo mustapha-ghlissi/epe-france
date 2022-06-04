@@ -1,0 +1,450 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block content %}
+    <div class="content">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-light border">
+                    <li class="breadcrumb-item"><a href="{{ path('app') }}">Accueil</a></li>
+                    <li class="breadcrumb-item active" area-current="page">{{ 'à'|upper}} propos</li>
+                </ol>
+            </nav>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body px-0 text-justify">
+                            <div class="p-3">
+                                <h2 class="mb-3 text-left" title="Qui sommes nous ?">
+                                    Association pour la défense des fonctionnaires et des usagers de la fonction publique « ADEFUFP »<br/><br/>
+                                    <b>Qui sommes-nous ?</b>
+                                </h2>
+                                <p>
+                                    Est-ce que chaque citoyen-ne a un rôle à jouer dans la <b>vie de la cité</b> ?
+                                    Est-ce que chaque citoyen-ne a <b>une voix qui compte</b> ?
+                                    Une voix qui doit être entendue et mérite d’être écoutée pour maintenir le bon fonctionnement de la vie commune ?
+                                </p>
+                                <p>
+                                    <b>C’est ce que nous croyons à l’ADEFUPP, ce qui nous motive et nous rassemble.</b>
+                                </p>
+                                <p>
+                                   Forte de ses convictions et de sa volonté d’œuvrer pour le maintien d’un équilibre démocratique,
+                                   l’ADEFUFP met à la disposition de chaque citoyen-ne des <b>outils numériques</b> qui, à leur niveau, vont contribuer à améliorer la vie démocratique en France,
+                                   impulsant et favorisant un climat de relations apaisées et sereines entre les élus et leurs concitoyens. 
+                                </p>
+                            </div>
+                            <dl>
+                                <dt class="p-3 bg-primary text-white">
+                                    <h3>«ADEFUFP, une boîte à outils au service de tous les citoyens»</h3>
+                                </dt>
+                                <dd class="p-3 mb-3">
+                                    <p>
+                                        Sur TOUS les sujets qui le touchent ou qui l’intéressent, l’association donne à chacun  la possibilité de <b>s’exprimer librement</b>.
+                                        Ainsi que d’accéder à de nombreuses informations pratiques détenues par les administrations publiques.
+                                    </p>
+                                    <p>
+                                        Après la création des outils de participation citoyenne que sont les applications
+                                        <a href="https://eusep-france.com" target="_blank"><b>EUSEP-FRANCE.COM</b></a> et
+                                        <a href="https://rif-france.com" target="_blank"><b>RIF-FRANCE.COM</b></a>,
+                                        l’ADEFUFP a imaginé un nouveau moyen d’encourager et de booster les <b>jeunes</b> citoyens à participer davantage au débat public en créant l’application  EPE-FRANCE.COM.
+                                    </p>
+                                    <p>
+                                       Cette application a pour objectif de renouer des <b>liens de confiance entre les citoyens et leurs élus</b>.
+                                       Elle a également vocation à lutter contre l’abstention pendant les élections et à mobiliser chaque électeur autour des véritables enjeux de la démocratie.
+                                    </p>
+                                    <p>
+                                        Au croisement entre la <b>démocratie représentative</b> et la <b>démocratie participative</b>,
+                                        notre association veut promouvoir et défendre une <b>démocratie mixte</b>,
+                                        au confluent de ces deux mouvements essentiels à la vie de la cité.
+                                    </p>
+                                    <p>
+                                        <b>La démocratie mixte</b> que nous entendons développer et représenter, que nous défendons sans relâche depuis la création de notre association en 2019,
+                                    est constitutive de notre ADN, vivante, conviviale, force de rassemblement et de solidarité.
+                                    </p>
+                                </dd>
+
+                                <dt class="p-3 bg-primary text-white">
+                                    <h3>ADN de notre Association</h3>
+                                </dt>
+                                <dd class="p-3 mb-3">
+                                    <p>
+                                        Créée dès janvier 2019 pour défendre et protéger les intérêts des fonctionnaires et des usagers de la fonction publique, notre association est solidaire et citoyenne, elle milite pour une réelle justice sociale.
+                                    </p>
+                                    <p>
+                                        Si elle prend sa source dans les mouvements sociétaux récents, elle n’en traduit pas moins le souhait historique d’agir et de transformer le monde en combattant les inégalités pérennes.
+                                    </p>
+                                    <p>
+                                       En nous situant au plus près des préoccupations des Français-es, nous leur proposons des moyens d’expression simples, faciles d’accès :  méthodes et outils innovants, garants de l’expression individuelle et collective.
+                                    </p>
+                                    <p>
+                                    Renforcer la justice sociale et permettre de créer une complémentarité entre la démocratie participative et la démocratie représentative : <b>l’avenir est à la démocratie mixte</b>.
+                                    </p>
+                                </dd>
+
+
+                                <dt class="p-3 bg-primary text-white">
+                                    <h3>Une équipe jeune et dynamique</h3>
+                                </dt>
+                                <dd class="p-3 mb-3">
+                                    <p>
+                                        Notre association est animée par une jeune équipe, active, volontaire et dynamique, mue par le souci du bien commun et de l’intérêt collectif.
+                                    </p>
+                                    <p>
+                                        En promouvant l’accélération du <b>mixte démocratie</b> (représentative et participative),
+                                        nous lançons une <b>autre façon de faire de la politique</b>, nous revivifions la vie démocratique et populaire.
+                                        Pour nous, la participation des citoyens doit constituer un <b>nouveau mode de vie sociale</b>,
+                                        permettant de retisser le lien et la confiance avec les élus : retrouver le <b>chemin d’un dialogue français</b>, telle est notre ambition assumée.
+                                    </p>
+                                </dd>
+
+
+                                <dt class="p-3 bg-primary text-white">
+                                    <h3>
+                                        Une volonté de partage
+                                    </h3>
+                                </dt>
+                                <dd class="p-3 mb-3">
+                                    <p>
+                                        L’association ADEFUFP a choisi d’œuvrer pour l’égalité et la justice sociale, de multiplier les actions et chercher avant tout des solutions simples et efficientes, dans le but de soutenir, appuyer et porter cette volonté partagée.
+                                    </p>
+                                    <p>
+                                        Parce que l’engagement citoyen ne doit pas être un simple mot, un slogan minimaliste ou un fantasme,
+                                        mais tout au contraire, il doit se traduire en <b>actions concrètes, visibles, partagées, voulues, enviées</b>.
+                                        Des actions porteuses d’un éventail de solutions en faveur de <b>l’inclusivité populaire</b>.
+                                    </p>
+                                    <p>
+                                        Cet engagement inclusif est une obligation morale de tout un chacun, une volonté à porter par tous car nous, Français, sommes tous liés par le sang du drapeau, par la pensée révolutionnaire de l’Histoire, par le courage de nos ancêtres et par la munificence d’un regard tourné vers les autres.
+                                    </p>
+
+                                    <p class="text-info">
+                                        Quel plus bel outil d'engagement, concret et novateur, mis au service du peuple, par le peuple et pour le peuple, que celui de l’association ADEFUFP !
+                                    </p>
+
+                                    <p>
+                                    <b>
+                                        Trois applications ont été créées au service de la participation citoyenne pour évaluer la politique des élus, les services publics et favoriser l’expression des fonctionnaires.
+                                    </b>
+                                    </p>
+                                </dd>
+
+
+                                <dt class="d-flex flex-row flex-wrap align-items-center p-3 bg-primary text-white">
+                                    <img class="img-fluid bg-light mr-3 mb-md-0 mb-4 p-1 rounded" src="{{ asset('build/images/logo_epe.86109c77.png') }}" style="height: 70px"/>
+                                    <h3>
+                                        EPE-FRANCE.COM, c'est quoi?
+                                    </h3>
+                                </dt>
+                                <dd class="p-3 mb-3">
+                                    <h4>
+                                        Évaluation de la politique des Élus
+                                    </h4>
+                                    <p>
+                                        <b>EPE-FRANCE.COM</b> dispose du Répertoire National des élus de France, issue de l’open data officiel du gouvernement français. Ce registre comporte les élus suivants :
+                                    </p>
+                                    <ul class="list-unstyled ml-3 text-primary">
+                                        <li>
+                                            <form action="{{ path('elected_members_list', {categoryName: 'liste-des-maires'}) }}" method="post">
+                                                <input type="hidden" name="categoryId" value="9">
+                                                <button class="btn btn-link text-primary">
+                                                    <i class="fa fa-arrow-circle-right"></i> Maires
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <form action="{{ path('elected_members_list', {categoryName: 'liste-des-conseillers-municipaux'}) }}" method="post">
+                                                <input type="hidden" name="categoryId" value="1">
+                                                <button class="btn btn-link text-primary">
+                                                    <i class="fa fa-arrow-circle-right"></i> Conseillers municipaux
+                                                </button>
+                                            </form>
+                                        </li>
+                                        </li>
+                                        <li>
+                                            <form action="{{ path('elected_members_list', {categoryName: 'liste-des-conseillers-communautaires'}) }}" method="post">
+                                                <input type="hidden" name="categoryId" value="2">
+                                                <button class="btn btn-link text-primary">
+                                                    <i class="fa fa-arrow-circle-right"></i> Conseillers cantonaux
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <form action="{{ path('elected_members_list', {categoryName: 'liste-des-conseillers-departementaux'}) }}" method="post">
+                                                <input type="hidden" name="categoryId" value="3">
+                                                <button class="btn btn-link text-primary">
+                                                    <i class="fa fa-arrow-circle-right"></i> Conseillers départementaux
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <form action="{{ path('elected_members_list', {categoryName: 'liste-des-presidents-des-departements'}) }}" method="post">
+                                                <input type="hidden" name="categoryId" value="10">
+                                                <button class="btn btn-link text-primary">
+                                                    <i class="fa fa-arrow-circle-right"></i> Présidents de département
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <form action="{{ path('elected_members_list', {categoryName: 'liste-des-conseillers-regionaux'}) }}" method="post">
+                                                <input type="hidden" name="categoryId" value="4">
+                                                <button class="btn btn-link text-primary">
+                                                    <i class="fa fa-arrow-circle-right"></i> Conseillers régionaux
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <form action="{{ path('elected_members_list', {categoryName: 'liste-des-presidents-des-regions'}) }}" method="post">
+                                                <input type="hidden" name="categoryId" value="11">
+                                                <button class="btn btn-link text-primary">
+                                                    <i class="fa fa-arrow-circle-right"></i> Présidents de région
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <form action="{{ path('elected_members_list', {categoryName: 'liste-des-conseillers-corse'}) }}" method="post">
+                                                <input type="hidden" name="categoryId" value="5">
+                                                <button class="btn btn-link text-primary">
+                                                    <i class="fa fa-arrow-circle-right"></i> Conseillers corse
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <form action="{{ path('elected_members_list', {categoryName: 'liste-des-depute'}) }}" method="post">
+                                                <input type="hidden" name="categoryId" value="8">
+                                                <button class="btn btn-link text-primary">
+                                                    <i class="fa fa-arrow-circle-right"></i> Députés
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <form action="{{ path('elected_members_list', {categoryName: 'liste-des-deputes-europeens'}) }}" method="post">
+                                                <input type="hidden" name="categoryId" value="6">
+                                                <button class="btn btn-link text-primary">
+                                                    <i class="fa fa-arrow-circle-right"></i> Députés européens
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <form action="{{ path('elected_members_list', {categoryName: 'liste-des-senateurs'}) }}" method="post">
+                                                <input type="hidden" name="categoryId" value="7">
+                                                <button class="btn btn-link text-primary">
+                                                    <i class="fa fa-arrow-circle-right"></i> Sénateurs
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        Grâce à cette application, chaque citoyen peut exprimer son ressenti en évaluant les actions politiques conduites par chaque élu de sa circonscription, quelles que soient ses compétences respectives. Pour cela, l’application permet à ses utilisateurs de consulter les procès-verbaux des séances des conseils-municipaux, des conseils départementaux et des conseils régionaux.
+                                    </p>
+                                    <p>
+                                        <b>EPE-FRANCE.COM</b> offre en outre le moyen de s’informer sur l’élu de sa circonscription : assiduité pendant les séances, nombre de votes, textes votés, propositions déposées, participations aux commissions, etc.
+                                    </p>
+                                    <p>
+                                        Toutes les propositions émanant des citoyens sont les bienvenues. <b>EPE-FRANCE.COM</b> est au service de <b>tous les Français</b>, quelles que soient leur appartenance géographique, leur couleur politique et leur origine.
+                                    </p>
+                                    <p>
+                                        <b>Nous sommes tous les enfants de la République, tous égaux vis-à-vis des lois de la République, chaque voix compte, toute idée est à prendre en compte, le droit au débat est à conquérir.</b>
+                                    </p>
+                                </dd>
+
+
+                                <dt class="d-flex flex-row align-items-center p-3 bg-primary text-white">
+                                    <img class="img-fluid bg-light mr-3 mb-md-0 mb-4 p-1 rounded" src="{{ asset('build/images/eusep-logo.6227695c.png') }}" style="height: 70px"/>
+                                    <h3>
+                                        EUSEP-FRANCE.COM, c'est quoi?
+                                    </h3>
+                                </dt>
+                                <dd class="p-3 mb-3">
+                                    <h4>
+                                        Évaluation par les Usagers des Services Publics
+                                    </h4>
+                                    <p>
+                                        <b>EUSEP-FRANCE.COM</b> est une application collaborative et d’expression publique destinée à recueillir l’avis des usagers sur <b>l’utilisation des services publics</b> au quotidien. Présentés sous forme de notations, les avis permettent de réaliser des statistiques de satisfaction des services.
+                                    </p>
+                                    <p>
+                                       <b>EUSEP-FRANCE.COM</b> permet d’améliorer la communication et la transmission d’informations, en toute transparence, relativement aux décisions prises par les collectivités territoriales et par l’État sur <b>la gestion des deniers publics</b>.
+                                    </p>
+                                    <p>
+                                        <b>EUSEP-FRANCE.COM</b> offre également à chaque citoyen la possibilité de visualiser, de manière simple et rapide, <b>les résultats des évaluations</b> de chaque service public sur l’ensemble du territoire français.
+                                    </p>
+                                    <p>
+                                        <b>EUSEP-FRANCE.COM</b> permet également d’accéder aux données fiscales et financières de chaque collectivité ainsi qu’à l'évolution <b>des dépenses de fonctionnement</b> des administrations publiques.
+                                    </p>
+
+                                    <p>
+                                        Les différentes actions permises par l’application <b>EUSEP-FRANCE.COM</b> ?
+                                    </p>
+                                    <table class="mt-2 table table-bordered">
+                                        <tr>
+                                            <td>
+                                                <a href="https://eusep-france.com/annuaire" target="_blank">
+                                                    <i class="fa fa-arrow-circle-right"></i> Un moteur de recherche basé sur l'annuaire des services publics
+                                                    </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://eusep-france.com/evaluation/noter" target="_blank"><i class="fa fa-arrow-circle-right"></i> Un système de notation et d'évaluation des services publics</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://eusep-france.com/evaluation/notations" target="_blank"><i class="fa fa-arrow-circle-right"></i> Une publication du résultat de l’ensemble des évaluations des services
+                                                publics:</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://eusep-france.com/donnees/fiscales-communes"
+                                                   target="_blank"><i class="fa fa-arrow-circle-right"></i> Une publication des données fiscales et financières des communes</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://eusep-france.com/donnees/depenses-fonctionnement"
+                                                   target="_blank"><i class="fa fa-arrow-circle-right"></i> Une publication des données sur les dépenses de fonctionnement des
+                                                administrations publiques</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://youtu.be/w_PrVDmb8Ig" target="_blank"><i class="fa fa-arrow-circle-right"></i> Nos vidéos</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </dd>
+
+
+                                <dt class="d-flex flex-row align-items-center p-3 bg-primary text-white">
+                                    <img class="img-fluid bg-light mr-3 mb-md-0 mb-4 p-1 rounded" src="{{ asset('build/images/logo-rif.f36fc939.png') }}" style="height: 70px"/>
+                                    <h3>
+                                        RIF-FRANCE.COM, c'est quoi?
+                                    </h3>
+                                </dt>
+                                <dd class="p-3 mb-3">
+                                    <h4>
+                                        Référendum d’Initiative des Fonctionnaires
+                                    </h4>
+                                    <p>
+                                        <b>RIF-FRANCE.COM</b>, est une application qui donne la possibilité aux fonctionnaires de s’exprimer de manière simple et efficiente, sur leurs attentes, voire leurs mécontentements.
+                                    </p>
+                                    <p>
+                                        <b>RIF-FRANCE.COM</b> se nourrit de valeurs simples et pragmatiques. Notre projet se focalise sur la mobilisation et la participation de la <b>base opérationnelle</b> dans un mouvement ascendant vers le sommet hiérarchique, la base étant constituée des personnels de la fonction publique se ressentant exploités, abandonnés et oubliés.
+                                    </p>
+                                    <p><b>RIF-FRANCE.COM</b> développe un concept axé à la fois sur l’anonymat et la transparence. L’objectif est de <b>donner une voix aux sans-voix</b>, de rendre visibles les invisibles, de rétablir la fierté et la dignité de ceux qui sont malmenés par leurs supérieurs hiérarchiques. Nous valorisons la parole de la base pour faire en sorte que les décisions ne soient pas prises seulement par ceux qui sont au sommet.</p>
+                                    <u>
+                                        <b>Les différentes actions sur l’application rif-france.com</b>
+                                    </u>
+                                    <table class="mt-2 table table-bordered">
+                                        <tr>
+                                            <td>
+                                                <a href="https://rif-france.com/" target="_blank"><i class="fa fa-arrow-circle-right"></i> Faire des publications</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://rif-france.com/petitions" target="_blank"><i class="fa fa-arrow-circle-right"></i> Signer des pétitions</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://rif-france.com/conditions-de-travail" target="_blank"><i class="fa fa-arrow-circle-right"></i> Dénoncer les conditions de travail</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://rif-france.com/harcelements" target="_blank"><i class="fa fa-arrow-circle-right"></i> Dénoncer des harcèlements</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://rif-france.com/notations" target="_blank"><i class="fa fa-arrow-circle-right"></i> Noter des lignes hiérarchiques</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://rif-france.com/videos" target="_blank"><i class="fa fa-arrow-circle-right"></i> Visionner des vidéos</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <p>
+                                       Nous Français, sommes vaillants et protecteurs quand nous défendons <b>les droits de l’homme et l’intérêt général</b>. Nous sommes dynamiques et solides quand nous visons à construire <b>un avenir arc-en-ciel pour la future génération</b>. Nous sommes héroïques et grands quand nous prônons <b>la liberté et les valeurs universelles</b>. Nous sommes forts et puissants quand nous sommes <b>unis et solidaires</b>. Enfin, nous sommes amour quand nous savons être justes et égalitaires entre tous les citoyens.
+                                    </p>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <iframe style="width: 100%; height: 250px" class="mb-3" src="https://www.youtube.com/embed/AqNIvfJhOzY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                            <p class="card-text">
+                                Interview vidéo d'un usager du service public sur l'état de l'Assurance Maladie
+                            </p>
+                            <div class="text-right">
+                                <a href="https://www.youtube.com/channel/UC1-Ejnl0Fg16vw9nCzEFftg/videos" target="_blank" class="btn btn-link border">Voir plus <i
+                                            class="fa fa-arrow-right"></i></a>
+                            </div>
+                            <hr/>
+
+                            <iframe style="width: 100%; height: 250px" class="mb-3" src="https://www.youtube.com/embed/2wWiGWZBGgI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <p class="card-text">
+                               Interview vidéo d'un usager du service public sur l'état de la Mairie de Reims
+                            </p>
+                            <div class="text-right">
+                                <a href="https://www.youtube.com/channel/UC1-Ejnl0Fg16vw9nCzEFftg/videos" target="_blank" class="btn btn-link border">Voir plus <i
+                                            class="fa fa-arrow-right"></i></a>
+                            </div>
+                            <hr/>
+                            <iframe style="width: 100%; height: 250px" class="mb-3" src="https://www.youtube.com/embed/w_PrVDmb8Ig" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </iframe>
+                            <p class="card-text">
+                                Interview vidéo d'un usager du service public sur l'état de la Gare de Reims
+                            </p>
+                            <div class="text-right">
+                                <a href="https://www.youtube.com/channel/UC1-Ejnl0Fg16vw9nCzEFftg/videos" target="_blank" class="btn btn-link border">Voir plus <i
+                                            class="fa fa-arrow-right"></i></a>
+                            </div>
+
+
+
+                            <hr/>
+                            <iframe style="width: 100%; height: 250px" class="mb-3" src="https://www.youtube.com/embed/O8ozOSpx2JU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </iframe>
+                            <p class="card-text">
+                                Interview vidéo d'un usager du service public sur l'état du TGI
+                            </p>
+
+
+
+                            <hr/>
+                            <iframe style="width: 100%; height: 250px" class="mb-3" src="https://www.youtube.com/embed/lMGhCUBFDAU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </iframe>
+                            <p class="card-text">
+                                Interview vidéo d'un usager du service public sur l'état du centre des finances publiques
+                            </p>
+
+
+
+                             <hr/>
+                            <iframe style="width: 100%; height: 250px" class="mb-3" src="https://www.youtube.com/embed/1SvGeyq6knk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </iframe>
+                            <p class="card-text">
+                                Interview vidéo d'un usager du service public sur l'état de la poste
+                            </p>
+
+
+                            <hr/>
+                            <iframe style="width: 100%; height: 250px" class="mb-3" src="https://www.youtube.com/embed/QAmBiO9OruQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </iframe>
+                            <p class="card-text">
+                               Interview vidéo d'un usager du service public sur l'état de l'Hôpital Débré
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

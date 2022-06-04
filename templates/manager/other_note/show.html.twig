@@ -1,0 +1,66 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Détails député
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Détails maire</h5>
+                        <ul class="list-unstyled d-inline-flex align-items-center float-right">
+                            <li class="px-1">
+                                <a href="{{ path('other_note_index') }}" class="btn btn-link">
+                                    <i class="fa fa-arrow-left"></i> Retour
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                {{ include('manager/other_note/_delete_form.html.twig', {button_label: 'Supprimer'}) }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Adresse IP</th>
+                                <td>{{ other_note.ipAddress }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <td>{{ other_note.evaluationDate ? other_note.evaluationDate|date('d/m/Y à H:i') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de présence physique aux conseils et aux séances depuis le début de son mandat</th>
+                                <td>{{ other_note.presenceNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre d'Amendements depuis le début de son mandat</th>
+                                <td>{{ other_note.amendmentsNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de travaux dirigés depuis le début de son mandat</th>
+                                <td>{{ other_note.achievementsNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de projets réalisés depuis le début de son mandat</th>
+                                <td>{{ other_note.worksNumber }}</td>
+                            </tr>
+                            {% if other_note.comment %}
+                                <tr>
+                                    <th>Commentaire</th>
+                                    <td>{{ other_note.comment }}</td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

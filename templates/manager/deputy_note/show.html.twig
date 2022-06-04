@@ -1,0 +1,89 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Détails note député
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Détails note député</h5>
+                        <ul class="list-unstyled d-inline-flex align-items-center float-right">
+                            <li class="px-1">
+                                <a href="{{ path('deputy_note_index') }}" class="btn btn-link">
+                                    <i class="fa fa-arrow-left"></i> Retour
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                {{ include('manager/deputy_note/_delete_form.html.twig', {button_label: 'Supprimer'}) }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Nom & Prénom de député</th>
+                                <td>
+                                    {{ deputy_note.deputy.firstName|capitalize ~ ' ' ~ deputy_note.deputy.lastName|upper }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Adresse IP</th>
+                                <td>{{ deputy_note.ipAddress }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <td>{{ deputy_note.evaluationDate ? deputy_note.evaluationDate|date('d/m/Y à H:i') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de présence physique en séance publique depuis le début de son mandat</th>
+                                <td>{{ deputy_note.presenceNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre d'Amendements depuis le début de son mandat</th>
+                                <td>{{ deputy_note.amendmentsNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de votes depuis le début de son mandat</th>
+                                <td>{{ deputy_note.votesNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Nombre de participation depuis le début de son mandat,
+                                    aux travaux parlementaires dans les commissions:
+                                    permanentes, affaires européennes, spéciales, d'apuration des comptes,
+                                    mixtes paritaires, chargée de mettre en œuvre l'art 26 de la constitution, d'enq
+                                </th>
+                                <td>{{ deputy_note.participationsNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de propositions de loi déposé depuis le début de son mandat</th>
+                                <td>{{ deputy_note.suggestionsNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de rapports législatifs depuis le début de son mandat</th>
+                                <td>{{ deputy_note.reportsNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de questions écrites et orales depuis le début de son mandat</th>
+                                <td>{{ deputy_note.questionsNumber }}</td>
+                            </tr>
+                            {% if deputy_note.comment %}
+                            <tr>
+                                <th>Commentaire</th>
+                                <td>{{ deputy_note.comment }}</td>
+                            </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Liste des PVs de conseils
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Liste des PVs de conseils</h5>
+                        <ul class="list-unstyled float-right d-flex flex-row align-items-center">
+                            <li class="pl-2">
+                                <a href="{{ path('board_minute_new') }}" class="btn btn-success btn-sm">
+                                    <i class="fa fa-plus-circle"></i> Ajouter un PV de conseil
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <div class="table-responsive">
+                            <table class="dataTable-board-minutes table table-bordered" style="width: 100%">
+                                <thead>
+                                <tr>
+                                    <th>Nom (Commune, Département ou Région)</th> 
+                                    <th>Titre</th>
+                                    <th>Mois</th>
+                                    <th>Année</th>
+                                    <th>actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

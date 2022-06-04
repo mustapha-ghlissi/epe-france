@@ -1,0 +1,35 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    Mot de passe oublié
+{% endblock %}
+
+{% block body %}
+<div class="vh-100 d-flex align-items-lg-center py-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        {% include 'app/_common/_flash_message.html.twig' %}
+                        <div class="mb-3 d-flex flex-row justify-content-between align-items-center">
+                            <img class="img-fluid" style="width: 10rem" src="{{ asset('build/images/logo_epe.86109c77.png') }}" alt="">
+                            <h3 class="text-muted">
+                                Mot de passe oublié
+                            </h3>
+                        </div>
+                        <hr/>
+                        {{ form(form) }}
+
+                        <div class="form-group text-center mt-5">
+                            <a href="{{ path('manager_login') }}" class="">
+                                Retour à la page de connexion
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}

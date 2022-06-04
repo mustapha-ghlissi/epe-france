@@ -1,0 +1,37 @@
+{% set homepage = app.request.get('_route') == 'app' %}
+<nav class="navbar navbar-expand-lg border-bottom fixed-top bg-light"> {# navbar-epe #}
+    <div class="container">
+        <a class="navbar-brand" href="{{ path('app') }}">
+            <img src="{{ asset('build/images/logo_epe.86109c77.png') }}" style="height: 90px" class="img-fluid" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars text-primary"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav d-none d-lg-flex ml-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link rounded-pill ml-2 btn btn-primary text-white" href="{{ path('app') }}">Accueil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill ml-2 btn btn-primary text-white" href="{{ path('app_contact') }}">Contactez-nous</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill ml-2 btn btn-primary text-white" href="{{ path('app_about') }}">{{'à'|upper}} propos de nous</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav d-flex d-lg-none align-items-center justify-content-center ml-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ homepage ? '#home' : path('app') ~ '#home' }}">Accueil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_contact') }}">Contactez-nous</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_about') }}">{{'à'|upper}} propos de nous</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

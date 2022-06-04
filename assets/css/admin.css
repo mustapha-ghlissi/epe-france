@@ -1,0 +1,151 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/templates/simple-sidebar)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+body {
+  background: #F1F1F1;
+}
+
+ #wrapper {
+    overflow-x: hidden;
+ }
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+button:not(.btn-danger) {
+  height: 50px !important;
+  border-radius: 25px;
+}
+
+.bg-primary, .btn-primary {
+  background: #005C97 !important;
+}
+
+.form-control {
+  box-shadow: none !important;
+  height: 50px;
+  border-radius: 25px;
+}
+
+.input-group-append .btn {
+  border-radius: 0 25px 25px 0 !important;
+}
+
+.form-control:focus {
+  border-color: #005C97 !important;
+}
+
+.btn {
+  box-shadow: none !important;
+}
+
+
+.btn-primary {
+  border-color: #005C97 !important;
+}
+
+a:not(.btn), a.btn-link {
+  color: #005C97 !important;
+}
+
+.navbar-admin a {
+  color: white !important;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 0 1px lightgrey;
+}
+
+.page-item.active .page-link {
+  background-color: #005C97 !important;
+  border-color: #005C97 !important;
+  color: white !important;
+}
+
+
+.select2-selection--single {
+  height: 50px !important;
+  border-radius: 25px !important;
+  border-color: #ced4da;
+}
+
+.select2-selection__rendered {
+  line-height: 50px !important;
+  color: black !important;
+  padding-left: 15px !important;
+}
+
+.select2-selection__arrow {
+  height: 50px !important;
+}
+
+.select2-dropdown--below {
+  padding-top: 30px;
+}
+
+.select2-container--open .select2-selection--single {
+  border-radius: 25px 25px 0px 0px !important;
+}
+
+.select2-selection__placeholder {
+  color: #000 !important;
+}
+
+.select2-search__field:focus {
+  border-color: #005C97 !important;
+  box-shadow: none !important;
+}
+
+.list-group-item.active {
+  background-color: #005C97;
+  border-color: #005C97;
+  color: white !important;
+}
+
+#btn-back-top {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}

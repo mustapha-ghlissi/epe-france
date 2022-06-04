@@ -1,0 +1,52 @@
+{% extends 'manager/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Liste des conseillers régionaux
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card my-3">
+                    <div class="card-header d-inline-flex w-100 flex-wrap align-items-center justify-content-between border-0">
+                        <h5 class="card-title">Liste des conseillers régionaux</h5>
+                        <ul class="list-unstyled float-right d-flex flex-row align-items-center">
+                            <li class="pl-2">
+                                <a href="{{ path('regional_advisor_new') }}" class="btn btn-success btn-sm">
+                                    <i class="fa fa-plus-circle"></i> Créer un(e) consieller régional
+                                </a>
+                            </li>
+                            <li class="pl-2">
+                                <a href="{{ path('import_spreadsheet', {categoryId: 4}) }}"
+                                   class="btn btn-primary btn-sm">
+                                    <i class="fa fa-file-excel"></i> Importer
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% include 'manager/_common/_flash_message.html.twig' %}
+                        <div class="table-responsive">
+                            <table class="dataTable-regionals table table-bordered" style="width: 100%">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Sexe</th>
+                                    <th>Date de naissance</th>
+                                    <th>actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

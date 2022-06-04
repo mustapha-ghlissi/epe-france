@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}EPE France{% endblock %}</title>
+        <link rel="icon" type="image/png" href="{{ asset('build/images/logo.712e4178.ico') }}">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Open+Sans:bold,regular">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            {% block header %}{% endblock %}
+            {% block content %}{% endblock %}
+            {% block footer %}{% endblock %}
+        {% endblock %}
+
+        <a href="#" id="btn-back-top" class="rounded p-2 bg-primary">
+           <i class="fa fa-arrow-up fa-2x text-white"></i>
+        </a>
+
+        <!-- START Bootstrap-Cookie-Alert -->
+        <div class="p-3 text-center cookiealert border-0" style="position: fixed; bottom: 0" role="alert">
+            <b>Vous aimez les cookies ?</b> &#x1F36A;
+            Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site.
+            Si vous continuez à utiliser ce dernier, nous considérons que vous acceptez l'utilisation des cookies.
+            <button type="button" class="btn btn-primary btn-sm acceptcookies">
+               J'accepte
+            </button>
+        </div>
+        <!-- END Bootstrap-Cookie-Alert -->
+
+        <script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
